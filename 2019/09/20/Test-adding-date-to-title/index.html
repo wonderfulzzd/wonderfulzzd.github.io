@@ -4,9 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="How to insert pictures in your blog, Zhidong Brian Zhang&#39;s blog">
-    <meta name="description" content="Directly copy from https://liolok.github.io/en/How-to-Add-Image-to-Hexo-Blog-Post/
-Adding an image is supposed to be eas">
+    <meta name="keywords" content="Test_adding_date_to_title, Zhidong Brian Zhang&#39;s blog">
+    <meta name="description" content="Test_adding_date_to_title | Zhidong Brian Zhang&#39;s blog">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +13,7 @@ Adding an image is supposed to be eas">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>How to insert pictures in your blog | Zhidong Brian Zhang&#39;s blog</title>
+    <title>Test_adding_date_to_title | Zhidong Brian Zhang&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -286,13 +285,13 @@ Adding an image is supposed to be eas">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        How to insert pictures in your blog
+                        Test_adding_date_to_title
                     </div>
                 </div>
             </div>
@@ -431,55 +430,7 @@ Adding an image is supposed to be eas">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Directly copy from <a href="https://liolok.github.io/en/How-to-Add-Image-to-Hexo-Blog-Post/" target="_blank" rel="noopener">https://liolok.github.io/en/How-to-Add-Image-to-Hexo-Blog-Post/</a></p>
-<p>Adding an image is supposed to be easy in markdown. Syntax is like: <code>![alt](path &quot;title&quot;)</code>, in which:</p>
-<ul>
-<li><code>alt</code> is alternate text, provides alternative information for the image if user cannot view it for some reason like slow connection, wrong path or user is using screen reader;</li>
-<li><code>path</code> is image file link, most important part;</li>
-<li><code>title</code> is tooltip text (optional), appears when cursor is floating over the image.</li>
-</ul>
-<p>In this article I will mainly talk about the image file path or link or whatever you name it. But if you want to make a quick choice in different solutions, follow the map below and jump to the section directly.</p>
-<p><img src="How-to-Add-Image-to-Hexo-Blog-Post/Quick-Choice.png" alt="Quick Choice" title="Make a Quick Choice"></p>
-<a id="more"></a>
-
-<h1 id="Image-Hosting-Sevice"><a href="#Image-Hosting-Sevice" class="headerlink" title="Image Hosting Sevice"></a>Image Hosting Sevice</h1><p>*”An image hosting service allows individuals to upload images to an Internet website. The image host will then store the image onto its server, and show the individual different types of code to allow others to view that image.”* － <a href="https://en.wikipedia.org/wiki/Image_hosting_service" title="Image hosting service - Wikipedia" target="_blank" rel="noopener">Wikipedia</a></p>
-<p>There are websites providing this type of sevice: You upload an image file, then get the link of it, or even its markdown code directly.</p>
-<h2 id="External-URL"><a href="#External-URL" class="headerlink" title="External URL"></a>External URL</h2><figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">An Imgur Image</span>](<span class="link">https://i.imgur.com/ucHPX7L.gif "An Imgur Image"</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.imgur.com/ucHPX7L.gif" alt="An Imgur Image" title="An Imgur Image"></p>
-<p>In addition, you could even find editors or plugins, that will do the uploading work and insert markdown code automatically after you drag&amp;drop or paste the image.</p>
-<blockquote>
-<p>If you need to save the traffic of your blog site, an image hosting service may be a nice choice. However if you’re already using a static site hosting service like GitHub Pages, and don’t have that many posts and images, there is no need to save traffic at all.</p>
-</blockquote>
-<h1 id="Post-Asset-Folder"><a href="#Post-Asset-Folder" class="headerlink" title="Post Asset Folder"></a>Post Asset Folder</h1><p>First of all, this feature need to be enabled in Hexo site configuration file:</p>
-<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>Then the files in <code>source/_posts</code> should look like this:</p>
-<figure class="highlight plain"><figcaption><span>source/_posts/</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">2019-02-14-Test-Post.md</span><br><span class="line">2019-02-14-Test-Post/</span><br><span class="line">+-- Test-Image-1.png</span><br><span class="line">+-- Test-Image-2.png</span><br><span class="line">+-- Subdirectory/</span><br><span class="line">|   +-- Test-Image-3.png</span><br><span class="line">|   +-- Test-Image-4.png</span><br></pre></td></tr></table></figure>
-
-<p>You can see that post asset folder is besides the post source file, and has the same name with it.</p>
-<h2 id="Relative-Link-Based-on-Post-Source-File"><a href="#Relative-Link-Based-on-Post-Source-File" class="headerlink" title="Relative Link Based on Post Source File"></a>Relative Link Based on Post Source File</h2><p>First you need to install plugin <a href="https://www.npmjs.com/package/hexo-asset-link" target="_blank" rel="noopener"><code>hexo-asset-link</code></a>:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm i --save hexo-asset-link</span><br></pre></td></tr></table></figure>
-
-<p>Then in markdown source file, the base-relative links scheme would look like this:</p>
-<figure class="highlight md"><figcaption><span>source/_posts/2019-02-14-Test-Post.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![](2019-02-14-Test-Post/Test-Image-1.png)</span><br><span class="line">![](./2019-02-14-Test-Post/Test-Image-2.png)</span><br><span class="line">![](2019-02-14-Test-Post/Subdirectory/Test-Image-3.png)</span><br><span class="line">![](./2019-02-14-Test-Post/Subdirectory/Test-Image-4.png)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Relative-Link-Based-on-Post-Asset-Folder"><a href="#Relative-Link-Based-on-Post-Asset-Folder" class="headerlink" title="Relative Link Based on Post Asset Folder"></a>Relative Link Based on Post Asset Folder</h2><figure class="highlight md"><figcaption><span>source/_posts/2019-02-14-Test-Post.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![](Test-Image-1.png)</span><br><span class="line">![](./Test-Image-2.png)</span><br><span class="line">![](Subdirectory/Test-Image-3.png)</span><br><span class="line">![](./Subdirectory/Test-Image-4.png)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>This type of base-relative link would only works on post page, not on home page excerption or editor preview.</p>
-</blockquote>
-<h1 id="Global-Asset-Folder"><a href="#Global-Asset-Folder" class="headerlink" title="Global Asset Folder"></a>Global Asset Folder</h1><p>For images it could be <code>source/images</code> or <code>source/img</code> or something similiar. For example I put my site favison into <code>source/images/sakamoto/</code>:</p>
-<h2 id="Root-relative-Link"><a href="#Root-relative-Link" class="headerlink" title="Root-relative Link"></a>Root-relative Link</h2><p>Pay attention to the first slash ‘/‘, without it the link would be a base-relative one.</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">Site Favicon</span>](<span class="link">/images/sakamoto/favicon.png "My Site Favicon"</span>)</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/sakamoto/favicon.png" alt="Site Favicon" title="My Site Favicon"></p>
-<blockquote>
-<p>This type of root-relative link works in blog site, but basically not in editor preview.</p>
-</blockquote>
-<h1 id="Hexo-Tag-Plugin-Syntax"><a href="#Hexo-Tag-Plugin-Syntax" class="headerlink" title="Hexo Tag Plugin Syntax"></a>Hexo Tag Plugin Syntax</h1><p>Here is the official <a href="https://hexo.io/docs/asset-folders#Tag-Plugins-For-Relative-Path-Referencing" title="Tag Plugins For Relative Path Referencing" target="_blank" rel="noopener">documentation</a> about this solution, I don’t even want to write it down in my own blog. Here are top comments right below the docs:</p>
-<p><img src="How-to-Add-Image-to-Hexo-Blog-Post/Top-Comments-of-Tag-Syntax.png" alt="Top Comments of Tag Syntax" title="Top comments of tag syntax"></p>
-
+                
             </div>
             <hr/>
 
@@ -641,9 +592,9 @@ Adding an image is supposed to be eas">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《How to insert pictures in your blog》
+                    《Test_adding_date_to_title》
                 </span> by
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/20/How-to-insert-pictures-in-your-blog/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/20/Test-adding-date-to-title/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Zhidong Brian Zhang
             </a> is licensed under a
@@ -683,9 +634,10 @@ Adding an image is supposed to be eas">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2019/09/20/Test-adding-date-to-title/">
                     <div class="card-image">
@@ -703,9 +655,9 @@ Adding an image is supposed to be eas">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-user fa-fw"></i>
@@ -714,6 +666,7 @@ Adding an image is supposed to be eas">
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -724,20 +677,20 @@ Adding an image is supposed to be eas">
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/20/Hexo-usage-useful-instructions/">
+                <a href="/2019/09/20/How-to-insert-pictures-in-your-blog/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hexo usage useful instructions">
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="How to insert pictures in your blog">
                         
-                        <span class="card-title">Hexo usage useful instructions</span>
+                        <span class="card-title">How to insert pictures in your blog</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            [Reprint] https://godweiyang.com/2018/04/13/hexo-blog/by weiyang
-
+                            Directly copy from https://liolok.github.io/en/How-to-Add-Image-to-Hexo-Blog-Post/
+Adding an image is supposed to be eas
                         
                     </div>
                     <div class="publish-info">
