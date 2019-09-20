@@ -2,84 +2,60 @@
 
 
 
-  
 
 
-<html class="theme-next muse use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
+<html lang="en">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 3.9.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
 
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
 
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="Learning is not learning.">
+  <meta name="description" content="Learning is not learning.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Zhidong Brian Zhang&#39;s blog">
 <meta property="og:url" content="http://wonderfulzzd.github.io/index.html">
@@ -89,40 +65,19 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zhidong Brian Zhang&#39;s blog">
 <meta name="twitter:description" content="Learning is not learning.">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
   <link rel="canonical" href="http://wonderfulzzd.github.io/">
 
 
-
-
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
 
   <title>Zhidong Brian Zhang's blog</title>
   
@@ -134,38 +89,53 @@
 
 
 
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
-
-  
-  
-    
-  
-
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container use-motion">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
 
-    <div class="custom-logo-site-title">
+    <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Zhidong Brian Zhang's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
         <p class="site-subtitle">Summary and share</p>
       
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -173,124 +143,99 @@
   </div>
 </div>
 
+
 <nav class="site-nav">
   
-
-  
-    <ul id="menu" class="menu">
+  <ul id="menu" class="menu">
+      
+      
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            Home
-          </a>
-        </li>
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+      
+      
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            Archives
-          </a>
-        </li>
       
+    
 
-      
-    </ul>
-  
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
-  
+  </li>
+  </ul>
+
+    
+
 </nav>
-
-
-
- </div>
+</div>
     </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
-    
-      
-
-  
-
+  <div id="posts" class="posts-expand">
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://wonderfulzzd.github.io/2019/09/20/Hexo-usage-useful-instructions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhidong Brian Zhang">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="Learning is not learning.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zhidong Brian Zhang's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/20/Hexo-usage-useful-instructions/" itemprop="url">Hexo usage useful instructions</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/20/Hexo-usage-useful-instructions/" class="post-title-link" itemprop="url">Hexo usage useful instructions</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">Posted on</span>
+                
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-20T03:04:01-04:00">
-                2019-09-20
-              </time>
-            
 
-            
-
-            
-          </span>
-
-          
-
+              <time title="Created: 2019-09-20 03:04:01 / Modified: 03:05:06" itemprop="dateCreated datePublished" datetime="2019-09-20T03:04:01-04:00">2019-09-20</time>
+            </span>
           
             
-          
 
-          
-          
-
-          
-
+            
           
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -298,119 +243,72 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
+          <p>[Reprint] <a href="https://godweiyang.com/2018/04/13/hexo-blog/" target="_blank" rel="noopener">https://godweiyang.com/2018/04/13/hexo-blog/</a><br>by weiyang</p>
 
-      
-        
-          
-            <p>[Reprint] <a href="https://godweiyang.com/2018/04/13/hexo-blog/" target="_blank" rel="noopener">https://godweiyang.com/2018/04/13/hexo-blog/</a><br>by weiyang</p>
-
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://wonderfulzzd.github.io/2019/09/20/Deal-ii-step-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhidong Brian Zhang">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="Learning is not learning.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zhidong Brian Zhang's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/20/Deal-ii-step-1/" itemprop="url">Deal.ii step-1</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/20/Deal-ii-step-1/" class="post-title-link" itemprop="url">Deal.ii step-1</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">Posted on</span>
+                
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-20T02:29:06-04:00">
-                2019-09-20
-              </time>
-            
 
-            
-
-            
-          </span>
-
-          
-
+              <time title="Created: 2019-09-20 02:29:06 / Modified: 02:36:42" itemprop="dateCreated datePublished" datetime="2019-09-20T02:29:06-04:00">2019-09-20</time>
+            </span>
           
             
-          
 
-          
-          
-
-          
-
+            
           
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -418,12 +316,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <pre><code>2019.09.16 Step-1 Study</code></pre><p>The “step-1” is very fundamental one in the deal.ii tutorials. It is about how to generate grids. Two grids were generated. They are rectangular and ring-shape grids. The rectangular grid (mesh) is an uniform mesh, while the ring shape grid has been locally refined along the inner circle.</p>
+          <pre><code>2019.09.16 Step-1 Study</code></pre><p>The “step-1” is very fundamental one in the deal.ii tutorials. It is about how to generate grids. Two grids were generated. They are rectangular and ring-shape grids. The rectangular grid (mesh) is an uniform mesh, while the ring shape grid has been locally refined along the inner circle.</p>
 <p>The code has been adapted to 3D by only changing the number in each template from &lt;2&gt; to &lt;3&gt;. We can get the 3D meshes which are shown as follows,</p>
 <p>However, we can see that the grids (2D and 3D) in the above right figures are not good. Even there are some elements having been refined, they only locate at the vertexes. This problem is caused by the selection of cells to be refined.</p>
 <p>According to the judging criterion for selection cell for refining, which is as highlighted in the following picture, only when one cell has a vertex that is located on the inner surface of the shell (the distance tolerance is very small, 1E-10), the cell will be flagged with “set_refine_flag” and will be refined later. However, as we can see from the top right figure, some of the refined cells that are generated in the first two refining processes will have no vertex close enough to the inner surface of the shell. Therefore, the following grid refining processes will not include those cells. Only the cells including the vertexes of the original coarse grid will keep being refined. This make the final grid look like uneven and fine cells concentrate at several points.</p>
@@ -434,112 +327,66 @@
 <p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_1.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_1.html</a></p>
 <p>The explanation from Dr. Xinbo Qi can be viewed from this link,<br><a href="http://qixinbo.info/2016/08/02/dealii-learn-step1/" target="_blank" rel="noopener">http://qixinbo.info/2016/08/02/dealii-learn-step1/</a></p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-      
-
-  
-
+        <article itemscope itemtype="http://schema.org/Article">
   
   
   
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="http://wonderfulzzd.github.io/2019/09/20/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhidong Brian Zhang">
-      <meta itemprop="description" content>
+      <meta itemprop="description" content="Learning is not learning.">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Zhidong Brian Zhang's blog">
     </span>
-
-    
       <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/20/hello-world/" itemprop="url">Hello World</a></h1>
-        
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/09/20/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+          
+        </h1>
 
         <div class="post-meta">
-          <span class="post-time">
-            
+            <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
+              <span class="post-meta-item-text">Posted on</span>
+
               
-                <span class="post-meta-item-text">Posted on</span>
+                
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-20T02:17:38-04:00">
-                2019-09-20
-              </time>
-            
 
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
+              <time title="Created: 2019-09-20 02:17:38" itemprop="dateCreated datePublished" datetime="2019-09-20T02:17:38-04:00">2019-09-20</time>
+            </span>
           
 
           
 
         </div>
       </header>
-    
 
     
     
@@ -547,12 +394,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
@@ -566,41 +408,25 @@
 
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
-          
         
       
     </div>
-    
-    
-    
 
     
-
     
-
     
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
   </div>
   
   
   
   </article>
 
-
     
-  </section>
+  </div>
 
   
 
@@ -608,11 +434,7 @@
           </div>
           
 
-
-          
-
         </div>
-        
           
   
   <div class="sidebar-toggle">
@@ -623,94 +445,70 @@
     </div>
   </div>
 
-  <aside id="sidebar" class="sidebar">
-    
+  <aside class="sidebar">
     <div class="sidebar-inner">
 
-      
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-      
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">Zhidong Brian Zhang</p>
-              <p class="site-description motion-element" itemprop="description">Learning is not learning.</p>
-          </div>
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Zhidong Brian Zhang</p>
+  <div class="site-description" itemprop="description">Learning is not learning.</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+    
+  </nav>
 
-          <nav class="site-state motion-element">
 
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives/">
-              
-                  <span class="site-state-item-count">3</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
 
-            
-
-            
-
-          </nav>
-
-          
-
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-
-      
+      </div>
 
     </div>
   </aside>
+  <div id="sidebar-dimmer"></div>
 
 
-        
       </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Zhidong Brian Zhang</span>
-
-  
 </div>
-
-
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
-
-
-
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
   <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
-
-
-
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.4.0</div>
 
         
+
+
+
+
+
 
 
 
@@ -721,31 +519,17 @@
         
       </div>
     </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-    
-
   </div>
 
   
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
 
-
-
-
-
-
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/muse.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -762,79 +546,6 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-  
 
 
 
@@ -843,24 +554,6 @@
 
 
 
-
-
-
-
-  
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
 
   
 
