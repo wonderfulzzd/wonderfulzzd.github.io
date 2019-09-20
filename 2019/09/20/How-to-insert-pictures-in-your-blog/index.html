@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="keywords" content="How to insert pictures in your blog, Zhidong Brian Zhang&#39;s blog">
     <meta name="description" content="Directly copy from https://liolok.github.io/en/How-to-Add-Image-to-Hexo-Blog-Post/
-Adding an image is supposed to be eas">
+1![An Imgur Image](https://i.imgur.co">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -432,6 +432,13 @@ Adding an image is supposed to be eas">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>Directly copy from <a href="https://liolok.github.io/en/How-to-Add-Image-to-Hexo-Blog-Post/" target="_blank" rel="noopener">https://liolok.github.io/en/How-to-Add-Image-to-Hexo-Blog-Post/</a></p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">An Imgur Image</span>](<span class="link">https://i.imgur.com/ucHPX7L.gif "An Imgur Image"</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.imgur.com/ucHPX7L.gif" alt title="An Imgur Image"></p>
+<a id="more"></a>
+
+
+
 <p>Adding an image is supposed to be easy in markdown. Syntax is like: <code>![alt](path &quot;title&quot;)</code>, in which:</p>
 <ul>
 <li><code>alt</code> is alternate text, provides alternative information for the image if user cannot view it for some reason like slow connection, wrong path or user is using screen reader;</li>
@@ -440,7 +447,7 @@ Adding an image is supposed to be eas">
 </ul>
 <p>In this article I will mainly talk about the image file path or link or whatever you name it. But if you want to make a quick choice in different solutions, follow the map below and jump to the section directly.</p>
 <p><img src="How-to-Add-Image-to-Hexo-Blog-Post/Quick-Choice.png" alt="Quick Choice" title="Make a Quick Choice"></p>
-<a id="more"></a>
+<!-- more -->
 
 <h1 id="Image-Hosting-Sevice"><a href="#Image-Hosting-Sevice" class="headerlink" title="Image Hosting Sevice"></a>Image Hosting Sevice</h1><p>*”An image hosting service allows individuals to upload images to an Internet website. The image host will then store the image onto its server, and show the individual different types of code to allow others to view that image.”* － <a href="https://en.wikipedia.org/wiki/Image_hosting_service" title="Image hosting service - Wikipedia" target="_blank" rel="noopener">Wikipedia</a></p>
 <p>There are websites providing this type of sevice: You upload an image file, then get the link of it, or even its markdown code directly.</p>
@@ -459,7 +466,7 @@ Adding an image is supposed to be eas">
 
 <p>You can see that post asset folder is besides the post source file, and has the same name with it.</p>
 <h2 id="Relative-Link-Based-on-Post-Source-File"><a href="#Relative-Link-Based-on-Post-Source-File" class="headerlink" title="Relative Link Based on Post Source File"></a>Relative Link Based on Post Source File</h2><p>First you need to install plugin <a href="https://www.npmjs.com/package/hexo-asset-link" target="_blank" rel="noopener"><code>hexo-asset-link</code></a>:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm i --save hexo-asset-link</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm i --save hexo-asset-link</span></span><br></pre></td></tr></table></figure>
 
 <p>Then in markdown source file, the base-relative links scheme would look like this:</p>
 <figure class="highlight md"><figcaption><span>source/_posts/2019-02-14-Test-Post.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![](2019-02-14-Test-Post/Test-Image-1.png)</span><br><span class="line">![](./2019-02-14-Test-Post/Test-Image-2.png)</span><br><span class="line">![](2019-02-14-Test-Post/Subdirectory/Test-Image-3.png)</span><br><span class="line">![](./2019-02-14-Test-Post/Subdirectory/Test-Image-4.png)</span><br></pre></td></tr></table></figure>
