@@ -440,7 +440,7 @@ First, let’s gen">
 <p>Now we also generate the sparsity patterns of this coarse mesh.</p>
 <p><img src="sparsity_pattern1_coarse_mesh.png" alt="Sparsity pattern before optimization"><br><img src="sparsity_pattern2_coarse_mesh.png" alt="Sparsity pattern after optimization"></p>
 <p>From the figures, we can see that the total DoF is 8 because they are showing 8-by-8 matrices.<br>However, we have 8 nodes in the mesh. If each node has two DoF (x, y), we should end up with 16-by-16 matrices. So what is the problem?</p>
-<p>The answer is still not clear for me yet. But I guess the “dofhandler” only considers one node as one DoF. So it can be conviniently dimensionless?</p>
+<p>The answer is still not clear for me yet. But I guess the “dofhandler” only considers one node as one DoF. So it can be conviniently dimensionless?<br>I think I found the answer from the official tutorial document: Describing “degrees of freedom” in this context requires us to simply enumerate the basis functions of the space Vh. For Q1 elements this means simply enumerating the vertices of the mesh in some way, but for higher order elements, one also has to enumerate the shape functions that are associated with edges, faces, or cell interiors of the mesh.<br>So my guess should be correct.</p>
 <p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_2.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_2.html</a></p>
 
             </div>
