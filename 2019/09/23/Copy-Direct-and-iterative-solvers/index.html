@@ -4,9 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="Deal-ii-step-2, Brian&#39;s blog">
-    <meta name="description" content="2019.09.21 Step-2 StudyThe step-2 is mainly talking about the degree of freedom (Dof) of a FEM problem.
-First, let’s gen">
+    <meta name="keywords" content="[Copy]Direct and iterative solvers, Brian&#39;s blog">
+    <meta name="description" content="Completely copy from:
+https://caendkoelsch.wordpress.com/2018/11/29/direct-vs-iterative-solvers-in-fem/
+Direct vs. itera">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +15,7 @@ First, let’s gen">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Deal-ii-step-2 | Brian&#39;s blog</title>
+    <title>[Copy]Direct and iterative solvers | Brian&#39;s blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -264,13 +265,13 @@ First, let’s gen">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        Deal-ii-step-2
+                        [Copy]Direct and iterative solvers
                     </div>
                 </div>
             </div>
@@ -382,8 +383,8 @@ First, let’s gen">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Deal-ii/">
-                                <span class="chip bg-color">Deal.ii</span>
+                            <a href="/tags/FEM-Copy/">
+                                <span class="chip bg-color">FEM Copy</span>
                             </a>
                         
                     </div>
@@ -394,8 +395,8 @@ First, let’s gen">
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Research/" class="post-category">
-                                Research
+                            <a href="/categories/research/" class="post-category">
+                                research
                             </a>
                         
                     </div>
@@ -406,7 +407,7 @@ First, let’s gen">
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2019-09-21
+                    2019-09-23
                 </div>
 
                 
@@ -422,31 +423,34 @@ First, let’s gen">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre><code>2019.09.21 Step-2 Study</code></pre><p>The step-2 is mainly talking about the degree of freedom (Dof) of a FEM problem.</p>
-<p>First, let’s generate the default mesh, where the process is same as the one in step-1.</p>
-<p><img src="Default_generated_mesh.png" alt="Default generated mesh"></p>
-<p>The default results can also be generated, which are the sparsity patterns before optimization and after.</p>
-<p><img src="sparsity_pattern1.svg" alt="Sparsity pattern before optimization"><br><img src="sparsity_pattern2.svg" alt="Sparsity pattern after optimization"></p>
-<p>From the results, we can see, after optimization, the band of width of the FEM system matrix has been reduced, which is beneficial.</p>
-<p>Now we will try some thing else,</p>
-<p>If we remove reset all the manifold by using </p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">triangulation.reset<span class="emphasis">_all_</span>manifolds();</span><br></pre></td></tr></table></figure>
-
-<p>we can get a little bit strange mesh,</p>
-<p><img src="Default_generated_mesh_remove_all_manifold.png" alt="Default generated mesh remove all manifold"></p>
-<p>This is because the reason we discussed in step-1.</p>
-<p>Now we will keep using the reset manifold code and use a smaller initial grid number, say 4, without mesh refinement function as well.</p>
-<p><img src="A_very_coarse_shell_mesh.png" alt="A very coarse shell mesh"></p>
-<p>Now we also generate the sparsity patterns of this coarse mesh.</p>
-<p><img src="sparsity_pattern1_coarse_mesh.png" alt="Sparsity pattern before optimization"><br><img src="sparsity_pattern2_coarse_mesh.png" alt="Sparsity pattern after optimization"></p>
-<p>From the figures, we can see that the total DoF is 8 because they are showing 8-by-8 matrices.<br>However, we have 8 nodes in the mesh. If each node has two DoF (x, y), we should end up with 16-by-16 matrices. So what is the problem?</p>
-<p>The answer is still not clear for me yet. But I guess the “dofhandler” only considers one node as one DoF. So it can be conviniently dimensionless?<br>I think I found the answer from the official tutorial document: Describing “degrees of freedom” in this context requires us to simply enumerate the basis functions of the space Vh. For Q1 elements this means simply enumerating the vertices of the mesh in some way, but for higher order elements, one also has to enumerate the shape functions that are associated with edges, faces, or cell interiors of the mesh.</p>
-<p>Moreover, there is one sentence in step-3: “the index of a particular degree of freedom within the DoFHandler object that is defined on top of a triangulation (as opposed to the index of a particular degree of freedom within a particular cell). “</p>
-<p>So my guess should be correct.</p>
-<p>One more thing needs to be investigated is about the mesh.</p>
-<p><img src="Default_generated_mesh_problem_highlighted.png" alt="Default generated mesh problem highlighted"></p>
-<p>The problem has been highlighted, which is the mismatch between the vertices after mesh refinement.</p>
-<p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_2.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_2.html</a></p>
+                <p>Completely copy from:</p>
+<p><a href="https://caendkoelsch.wordpress.com/2018/11/29/direct-vs-iterative-solvers-in-fem/" target="_blank" rel="noopener">https://caendkoelsch.wordpress.com/2018/11/29/direct-vs-iterative-solvers-in-fem/</a></p>
+<p>Direct vs. iterative solvers in FEM<br>November 29, 2018 caendkoelschLeave a comment    </p>
+<p>In FEM we usually solve for the equation [K]{u} = {f}</p>
+<p>Here [K] is referred to as the stiffness matrix; {f} as the force vector and {u} as the set of unknowns.</p>
+<p>The classification of solvers into direct and iterative mainly depends on the method of getting {u} in the linear equation. The selection of the solver depends on the process mechanics and problem size and is nowadays automatically chosen by most of the commercially available FE tools.</p>
+<p>But as an engineer and analyst, it is good to know the back-end of what’s happening with respect to the solver selection. So here we go with a non-mathematical explanation of the differences between direct and iterative solvers used in FEM.</p>
+<p>Direct Solver:</p>
+<p>In the case of direct solver, you find the inverse of matrix [K] and then multiply with {f}. As this method involves inverting the matrix, it is mostly preferred for computationally less expensive problems. From literature, I understand that the direct solvers are effective for problems with less than 100,000 unknowns. And the memory requirements are higher and the ability to solve the equations in parallel is difficult but not impossible.</p>
+<p>Usually the direct solvers can be thought of as a variant of LU decomposition method where the [K] matrix is decomposed into a lower and upper triangular matrix (L and U respectively) in such a way that</p>
+<p>[K] = [L][U]</p>
+<p>More details about the method can be found here.</p>
+<p>FE developers exploit the sparsity patterns in the stiffness matrix to increase the computational efficiency in the case of direct solvers by using established algorithms for solving sparse matrices.</p>
+<p>What is a sparse matrix? – Read here.</p>
+<p>Iterative Solver:</p>
+<p>In the case of iterative solver, since finding inverse of a matrix is very time consuming if it is a very big matrix, they start with an initial solution(guess) and then gradually move towards the correct solution for {u}. Till a reasonably solution that satisfies the stop criterion (a tolerance value, usually) is obtained, the solver keeps iterating.</p>
+<p>So, this is also not an exact solution but an educated guess which is approximate. The search direction, i.e. the direction in which the initial guess moves towards the final solution is verified by using a variant of conjugate gradient method.</p>
+<p>Iterative solvers are suitable for computationally big problems as they often can be parallelized more efficiently using algorithms. But there is a catch. For solving the linearized equations using the iterative solvers, your matrix needs to be properly conditioned. To quote Prof. Wolfgang Bangerth’s words, “The art of devising a good iterative solver is to devise a good preconditioner!”.</p>
+<p>Report this ad<br>Report this ad</p>
+<p>In the case of iterative solvers, sometimes oscillatory behavior might be observed. This means the initial solution does not move gradually towards the correct approximate solution and rather diverge. As an end user, you can find this by constantly checking the numerical output that is written by the solver. Unusually long computational times can also be a good indicator for this kind of a problem.</p>
+<p>So how can you fix it?</p>
+<p>Again, this method is something that has worked for me most of the time. My approach would be to check the model thoroughly if it is constrained properly. As in, try to fix the dofs in your analysis domain that might not have an impact on the simulation results. By doing this, you are reducing the potential errors gradually and assisting the solver converge fast.</p>
+<p>And this is a very simplified and non-mathematical explanation of the topic which could be useful for a beginner or an application engineer who just wants to know which solver to use based on the problem context.</p>
+<p>For a detailed and mathematical explanation, I would recommend going through this link. <a href="https://link.springer.com/chapter/10.1007%2F978-3-319-59038-7_5" target="_blank" rel="noopener">https://link.springer.com/chapter/10.1007%2F978-3-319-59038-7_5</a></p>
+<p>Prost!</p>
+<p>~ Renga</p>
+<p>Other references:</p>
+<p>[1] <a href="http://www.math.colostate.edu/~bangerth/videos/676/slides.34.pdf" target="_blank" rel="noopener">http://www.math.colostate.edu/~bangerth/videos/676/slides.34.pdf</a></p>
 
             </div>
             <hr/>
@@ -485,9 +489,9 @@ First, let’s gen">
             <br/>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text"
                   property="dct:title" rel="dct:type">
-                    《Deal-ii-step-2》
+                    《[Copy]Direct and iterative solvers》
                 </span> by
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/21/Deal-ii-step-2/" property="cc:attributionName"
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/09/23/Copy-Direct-and-iterative-solvers/" property="cc:attributionName"
                rel="cc:attributionURL">
                 Zhidong Brian Zhang
             </a> is licensed under a
@@ -527,9 +531,10 @@ First, let’s gen">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2019/09/23/Copy-Direct-and-iterative-solvers/">
                     <div class="card-image">
@@ -549,9 +554,9 @@ Direct vs. itera
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -564,6 +569,7 @@ Direct vs. itera
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -582,32 +588,45 @@ Direct vs. itera
                 Next&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/20/hello-world/">
+                <a href="/2019/09/21/Deal-ii-step-2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Deal-ii-step-2">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">Deal-ii-step-2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            2019.09.21 Step-2 StudyThe step-2 is mainly talking about the degree of freedom (Dof) of a FEM problem.
+First, let’s gen
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-20
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-09-21
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-user fa-fw"></i>
-                            Zhidong Brian Zhang
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Research/" class="post-category">
+                                    Research
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Deal-ii/">
+                        <span class="chip bg-color">Deal.ii</span>
+                    </a>
+                    
                 </div>
                 
             </div>
