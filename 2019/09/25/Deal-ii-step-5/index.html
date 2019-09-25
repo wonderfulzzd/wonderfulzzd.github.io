@@ -5,12 +5,7 @@
 <head><meta name="generator" content="Hexo 3.9.0">
     <meta charset="utf-8">
     <meta name="keywords" content="Deal-ii-step-5, Brian&#39;s blog">
-    <meta name="description" content="2019.09.25 Step-5 Study
-
-
-2019.09.25 Step-5 Study2
-
-The step-4 is mainly talking about how deal.ii is dealing with probl">
+    <meta name="description" content="2019.09.25 Step-5 StudyThe step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh r">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -426,22 +421,25 @@ The step-4 is mainly talking about how deal.ii is dealing with probl">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <pre><code>2019.09.25 Step-5 Study
-
-
-2019.09.25 Step-5 Study2
-
-The step-4 is mainly talking about how deal.ii is dealing with problems with different dimensions by its featured dimensionless programming techniques.</code></pre><p>We can run the default code and derive the results.</p>
-<p><img src="Default_generated_results_2D.png" alt="Default generated result 2D"><br><img src="Default_generated_results_3D.png" alt="Default generated result 3D"></p>
-<p>   Note: the pictures are generated in ParaView5.5.0. There is a trick to display the 2D results in a kind of 3D surface style. The filter needs to be used is called “Warp By Scalar”.</p>
+                <pre><code>2019.09.25 Step-5 Study</code></pre><p>The step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh refinements.</p>
+<p>We can run the default code and derive the results.</p>
+<p><img src="Default_generated_results_1.eps" alt="Default generated result 1"><br><img src="Default_generated_results_2.png" alt="Default generated result 2"><br><img src="Default_generated_results_3.png" alt="Default generated result 3"><br><img src="Default_generated_results_4.png" alt="Default generated result 4"><br><img src="Default_generated_results_5.png" alt="Default generated result 5"><br><img src="Default_generated_results_6.png" alt="Default generated result 6"></p>
+<p>Note: the pictures are generated in ParaView5.5.0. There is a trick to display the 2D results in a kind of 3D surface style. The filter needs to be used is called “Warp By Scalar”.</p>
 <p>Nevertheless, for 3D results, the “Warp By Scalar” may not be extremely useful. In this situation, we need to use “Warp By Vector” filter.</p>
 <p>First, we need to use “Extract surface” filter, and then “Generate Surface Normals”. Last, use the “Warp By Vector”. As shown in the below figure,<br><img src="Default_generated_results_3D_warped_by_vector.png" alt="Default generated result 3D warped by vector"><br>However, we can see there are multiple slices generated around the cube. Why this happened? We clipped the block after the “Extract surface” filter and found that there are many small boxes generated, which are the inner grid being regarded as surfaces too by the “Extract surface” filter.<br><img src="Inner_grid_extracted_along_with_the_exterior.png" alt="Inner grid extracted along with the exterior"></p>
 <p>And later each of the slice will be corresponding to a slice shown in previous figure. So now the focus is to remove the inner grid before the “Extract surface” filter and only extract the most exterior sufaces.</p>
 <p>Thus, the “Clean To Grid” filter should be used now. After adding it before the “Extract surface”, we can see the small boxes inside the cube have disappeared.<br><img src="No_inner_grid_extracted_along_with_the_exterior.png" alt="No inner grid extracted along with the exterior"></p>
 <p>Therefore, the final warped result becomes more reasonable now as shown in the below figure.<br><img src="Default_generated_results_3D_warped_by_vector_after_Clean_To_Grid_filter_being_used.png" alt="Default generated result 3D warped by vector after Clean To Grid filter being used"></p>
-<p>Now I will go through all the possible extensions, which are similar to those in step-3.</p>
+<p>A preconditioned conjugate gradient (CG) algorithm has been used in step-5.</p>
+<p>Previously, the PreconditionIdentity has been used, which is exactly same as no precondition for the CG algorithm.</p>
+<p>Tips:</p>
 <ol>
-<li>Changing the mesh to hyper shell used previously and L-shape.</li>
+<li><p>Using “try &amp; check” assertions is helpful for finding bugs in codes.</p>
+</li>
+<li><p>The assertions should only be used in debug mode not optimized mode. The switch is in this way，<br> make debug<br> make release<br>Now I will go through all the possible extensions, which are similar to those in step-3.</p>
+</li>
+<li><p>Changing the mesh to hyper shell used previously and L-shape.</p>
+</li>
 </ol>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step4&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	// hyper shell, added by zzd</span></span><br><span class="line"><span class="code">	Point&lt;dim&gt; center (dim==2 ? Point&lt;dim&gt;(0,1): Point&lt;dim&gt;(0,0,1));</span></span><br><span class="line"><span class="code">	const double inner_radius = 0.5, outer_radius = 1.0;</span></span><br><span class="line"><span class="code">	GridGenerator::hyper_shell(triangulation, center, inner_radius, outer_radius, (dim==2 ? 10:12));</span></span><br><span class="line"><span class="code">	triangulation.refine_global(4);</span></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   Number of active cells: " &lt;&lt; triangulation.n_active_cells()</span></span><br><span class="line"><span class="code">            				&lt;&lt; std::endl</span></span><br><span class="line"><span class="code">							&lt;&lt; "   Total number of cells: " &lt;&lt; triangulation.n_cells()</span></span><br><span class="line"><span class="code">						&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -470,7 +468,7 @@ The step-4 is mainly talking about how deal.ii is dealing with problems with dif
 <ol>
 <li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
 </li>
-<li><p>The “friend” in C++ is still not very clear and should be further studied.</p>
+<li><p>The “friend” and “virtual” in C++ is still not crystal clear and should be further studied.</p>
 </li>
 </ol>
 <p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_4.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_4.html</a></p>
@@ -571,12 +569,7 @@ The step-4 is mainly talking about how deal.ii is dealing with problems with dif
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            2019.09.25 Step-5 Study
-
-
-2019.09.25 Step-5 Study2
-
-The step-4 is mainly talking about how deal.ii is dealing with probl
+                            2019.09.25 Step-5 StudyThe step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh r
                         
                     </div>
                     <div class="publish-info">
