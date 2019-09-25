@@ -456,6 +456,15 @@
 <p>#2  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: Step5&lt;2&gt;::run()</p>
 <p>#3  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: main</p>
 <p>However, when we use “make release” to build the program and run it, there is no such error notification anymore even we do not delete the piece of code: “Assert(dim==3, ExcInternalError())”.</p>
+<ol start="4">
+<li>Change the nonconstant coefficients</li>
+</ol>
+<p>Change the nonconstant coefficients from 20 to 2 with in the p.square&lt;0.5*0.5 range.</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">double coefficient(const Point&lt;dim&gt; &amp;p)</span><br><span class="line">&#123;</span><br><span class="line">//	Assert(dim == 3, ExcInternalError()); // assert study, added by zzd</span><br><span class="line"><span class="code">	if (p.square() &lt; 0.5 * 0.5)</span></span><br><span class="line">//		return 20;</span><br><span class="line"><span class="code">		return 2;</span></span><br><span class="line"><span class="code">	else</span></span><br><span class="line"><span class="code">		return 1;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The generated results is shown in the below picture,<br><img src="Change_the_non_constant_coefficients_from_20_to_2.png" alt="Change the non constant coefficients from 20 to 2"><br>We can see that the top surface is not flatten anymore.</p>
+<p>When the coefficient is changed to 1,<br><img src="Change_the_non_constant_coefficients_from_20_to_1.png" alt="Change the non constant coefficients from 20 to 1"><br>We can see the geometry becomes very smooth. The top surface is no long distinguishable.</p>
+<p>When the coefficient is changed to 0.1,<br><img src="Change_the_non_constant_coefficients_from_20_to_0.1.png" alt="Change the non constant coefficients from 20 to 0.1"><br>We can see the top surface is larger deformed than the rest of the geometry. A very sharp hat has been generated.</p>
 <h2 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work:"></a>Future work:</h2><ol>
 <li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
 </li>
