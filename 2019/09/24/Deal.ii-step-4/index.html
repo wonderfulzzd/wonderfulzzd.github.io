@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="2019.09.24 Step-4 StudyThe step-4 is mainly talking about how deal.ii is dealing with problems with different dimensions by its featured dimensionless programming techniques. We can run the default co">
+<meta name="keywords" content="Deal.ii">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deal.ii-step-4">
+<meta property="og:url" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/index.html">
+<meta property="og:site_name" content="Brian&#39;s blog">
+<meta property="og:description" content="2019.09.24 Step-4 StudyThe step-4 is mainly talking about how deal.ii is dealing with problems with different dimensions by its featured dimensionless programming techniques. We can run the default co">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/Default_generated_results_2D.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/Default_generated_results_3D.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/Default_generated_results_3D_warped_by_vector.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/Inner_grid_extracted_along_with_the_exterior.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/No_inner_grid_extracted_along_with_the_exterior.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/Default_generated_results_3D_warped_by_vector_after_Clean_To_Grid_filter_being_used.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/hyper_shell_results_2D_with_original_geometry.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/hyper_shell_results_3D_with_original_geometry.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/hyper_shell_results_3D_without_original_geometry.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/L_shape_results_2D.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/L_shape_results_3D.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/changing_the_boundary_conditions_2D.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/changing_the_boundary_conditions_3D.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/modifying_the_boundary_conditions_2D.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/modifying_the_boundary_conditions_3D.png">
+<meta property="og:updated_time" content="2019-10-08T00:07:38.877Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deal.ii-step-4">
+<meta name="twitter:description" content="2019.09.24 Step-4 StudyThe step-4 is mainly talking about how deal.ii is dealing with problems with different dimensions by its featured dimensionless programming techniques. We can run the default co">
+<meta name="twitter:image" content="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/Default_generated_results_2D.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Deal.ii-step-4 | Brian's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Brian's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">One word, one world</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wonderfulzzd.github.io/2019/09/24/Deal.ii-step-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhidong Brian Zhang">
+      <meta itemprop="description" content="Learning is not learning.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brian's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deal.ii-step-4
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-24 14:55:39" itemprop="dateCreated datePublished" datetime="2019-09-24T14:55:39-04:00">2019-09-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-10-07 20:07:38" itemprop="dateModified" datetime="2019-10-07T20:07:38-04:00">2019-10-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Research/" itemprop="url" rel="index"><span itemprop="name">Research</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <pre><code>2019.09.24 Step-4 Study</code></pre><p>The step-4 is mainly talking about how deal.ii is dealing with problems with different dimensions by its featured dimensionless programming techniques.</p>
+<p>We can run the default code and derive the results.</p>
+<p><img src="Default_generated_results_2D.png" alt="Default generated result 2D"><br><img src="Default_generated_results_3D.png" alt="Default generated result 3D"></p>
+<p>Note: the pictures are generated in ParaView5.5.0. There is a trick to display the 2D results in a kind of 3D surface style. The filter needs to be used is called “Warp By Scalar”.</p>
+<p>Nevertheless, for 3D results, the “Warp By Scalar” may not be extremely useful. In this situation, we need to use “Warp By Vector” filter.</p>
+<p>First, we need to use “Extract surface” filter, and then “Generate Surface Normals”. Last, use the “Warp By Vector”. As shown in the below figure,<br><img src="Default_generated_results_3D_warped_by_vector.png" alt="Default generated result 3D warped by vector"><br>However, we can see there are multiple slices generated around the cube. Why this happened? We clipped the block after the “Extract surface” filter and found that there are many small boxes generated, which are the inner grid being regarded as surfaces too by the “Extract surface” filter.<br><img src="Inner_grid_extracted_along_with_the_exterior.png" alt="Inner grid extracted along with the exterior"></p>
+<p>And later each of the slice will be corresponding to a slice shown in previous figure. So now the focus is to remove the inner grid before the “Extract surface” filter and only extract the most exterior sufaces.</p>
+<p>Thus, the “Clean To Grid” filter should be used now. After adding it before the “Extract surface”, we can see the small boxes inside the cube have disappeared.<br><img src="No_inner_grid_extracted_along_with_the_exterior.png" alt="No inner grid extracted along with the exterior"></p>
+<p>Therefore, the final warped result becomes more reasonable now as shown in the below figure.<br><img src="Default_generated_results_3D_warped_by_vector_after_Clean_To_Grid_filter_being_used.png" alt="Default generated result 3D warped by vector after Clean To Grid filter being used"></p>
+<p>Now I will go through all the possible extensions, which are similar to those in step-3.</p>
+<ol>
+<li>Changing the mesh to hyper shell used previously and L-shape.</li>
+</ol>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step4&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	// hyper shell, added by zzd</span></span><br><span class="line"><span class="code">	Point&lt;dim&gt; center (dim==2 ? Point&lt;dim&gt;(0,1): Point&lt;dim&gt;(0,0,1));</span></span><br><span class="line"><span class="code">	const double inner_radius = 0.5, outer_radius = 1.0;</span></span><br><span class="line"><span class="code">	GridGenerator::hyper_shell(triangulation, center, inner_radius, outer_radius, (dim==2 ? 10:12));</span></span><br><span class="line"><span class="code">	triangulation.refine_global(4);</span></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   Number of active cells: " &lt;&lt; triangulation.n_active_cells()</span></span><br><span class="line"><span class="code">            				&lt;&lt; std::endl</span></span><br><span class="line"><span class="code">							&lt;&lt; "   Total number of cells: " &lt;&lt; triangulation.n_cells()</span></span><br><span class="line"><span class="code">						&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="hyper_shell_results_2D_with_original_geometry.png" alt="Hyper_shell_results 2D_with_original geometry"></p>
+<p><img src="hyper_shell_results_3D_with_original_geometry.png" alt="Hyper_shell_results 3D with original geometry"></p>
+<p>We can see from the result that the problem we raised in the end of step-2 and step-3 hasn’t happened this time because we use refine_global this time.</p>
+<p>It looks like that the shell is fixed in the inner sphere because the smaller shell in the middle is the original shell shape, the most outside slice is the one after deformation. The shell is inflatted with the inner sphere fixed during this simulation (compare the previous figure and the following one).<br><img src="hyper_shell_results_3D_without_original_geometry.png" alt="hyper shell results 3D without original geometry"><br>However, I am still not sure about the boundary_values. Further investigation is welcome. </p>
+<p>For L-shape </p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// hyper L shape, added by zzd</span><br><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step4&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	GridGenerator::hyper_L(triangulation, -1, 1);   // L-shape structure, added by zzd</span></span><br><span class="line"><span class="code">	triangulation.refine_global(4);</span></span><br><span class="line"></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   Number of active cells: " &lt;&lt; triangulation.n_active_cells()</span></span><br><span class="line"><span class="code">            				&lt;&lt; std::endl</span></span><br><span class="line"><span class="code">							&lt;&lt; "   Total number of cells: " &lt;&lt; triangulation.n_cells()</span></span><br><span class="line"><span class="code">							&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="L_shape_results_2D.png" alt="L_shape_results 2D"><br><img src="L_shape_results_3D.png" alt="L_shape_results 3D"></p>
+<p>The L-shape looks good here.</p>
+<ol start="2">
+<li>Changing the boundary condition.<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step4&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	GridGenerator::hyper_cube(triangulation, -1, 1);</span></span><br><span class="line"><span class="code">	triangulation.begin_active()-&gt;face(0)-&gt;set_boundary_id(1); // added by zzd</span></span><br><span class="line"><span class="code">	triangulation.refine_global(4);</span></span><br><span class="line"></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   Number of active cells: " &lt;&lt; triangulation.n_active_cells()</span></span><br><span class="line"><span class="code">            				&lt;&lt; std::endl</span></span><br><span class="line"><span class="code">							&lt;&lt; "   Total number of cells: " &lt;&lt; triangulation.n_cells()</span></span><br><span class="line"><span class="code">							&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="changing_the_boundary_conditions_2D.png" alt="Changing the boundary conditions 2D"><br><img src="changing_the_boundary_conditions_3D.png" alt="Changing the boundary conditions 3D"></p>
+<ol start="3">
+<li>Modifying the type of the boundary conditions <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::map&lt;types::global_dof_index, double&gt; boundary_values;</span><br><span class="line">VectorTools::interpolate<span class="emphasis">_boundary_</span>values(dof_handler,</span><br><span class="line"><span class="code">		0,</span></span><br><span class="line"><span class="code">		//BoundaryValues&lt;dim&gt;(),</span></span><br><span class="line"><span class="code">		Functions::ZeroFunction&lt;dim&gt;(),  // added by zzd</span></span><br><span class="line"><span class="code">		boundary_values);</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img src="modifying_the_boundary_conditions_2D.png" alt="Modifying the boundary conditions 2D"><br><img src="modifying_the_boundary_conditions_3D.png" alt="Modifying the boundary conditions 3D"></p>
+<p>Future work:</p>
+<ol>
+<li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
+</li>
+<li><p>The “friend” in C++ is still not very clear and should be further studied.</p>
+</li>
+</ol>
+<p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_4.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_4.html</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Deal-ii/" rel="tag"># Deal.ii</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/23/Deal.ii-step-3/" rel="next" title="Deal.ii-step-3">
+                <i class="fa fa-chevron-left"></i> Deal.ii-step-3
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/25/Deal.ii-step-5/" rel="prev" title="Deal.ii-step-5">
+                Deal.ii-step-5 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Zhidong Brian Zhang</p>
+              <div class="site-description motion-element" itemprop="description">Learning is not learning.</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhidong Brian Zhang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

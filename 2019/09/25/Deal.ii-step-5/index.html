@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="2019.09.25 Step-5 StudyThe step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh refinements. We can run the default code and derive the results. Note: the pictur">
+<meta name="keywords" content="Deal.ii">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deal.ii-step-5">
+<meta property="og:url" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/index.html">
+<meta property="og:site_name" content="Brian&#39;s blog">
+<meta property="og:description" content="2019.09.25 Step-5 StudyThe step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh refinements. We can run the default code and derive the results. Note: the pictur">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Default_generated_results_0.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Default_generated_results_1.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Default_generated_results_2.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Default_generated_results_3.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Default_generated_results_4.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Default_generated_results_5.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Default_generated_results_5_noPreconditioner.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Change_the_non_constant_coefficients_from_20_to_2.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Change_the_non_constant_coefficients_from_20_to_1.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Change_the_non_constant_coefficients_from_20_to_0.1.png">
+<meta property="og:updated_time" content="2019-10-08T00:07:48.577Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deal.ii-step-5">
+<meta name="twitter:description" content="2019.09.25 Step-5 StudyThe step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh refinements. We can run the default code and derive the results. Note: the pictur">
+<meta name="twitter:image" content="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/Default_generated_results_0.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Deal.ii-step-5 | Brian's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Brian's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">One word, one world</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wonderfulzzd.github.io/2019/09/25/Deal.ii-step-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhidong Brian Zhang">
+      <meta itemprop="description" content="Learning is not learning.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brian's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Deal.ii-step-5
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-09-25 14:39:00" itemprop="dateCreated datePublished" datetime="2019-09-25T14:39:00-04:00">2019-09-25</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-10-07 20:07:48" itemprop="dateModified" datetime="2019-10-07T20:07:48-04:00">2019-10-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Research/" itemprop="url" rel="index"><span itemprop="name">Research</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <pre><code>2019.09.25 Step-5 Study</code></pre><p>The step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh refinements.</p>
+<h2 id="We-can-run-the-default-code-and-derive-the-results"><a href="#We-can-run-the-default-code-and-derive-the-results" class="headerlink" title="We can run the default code and derive the results."></a>We can run the default code and derive the results.</h2><p><img src="Default_generated_results_0.png" alt="Default generated result 1"><br><img src="Default_generated_results_1.png" alt="Default generated result 2"><br><img src="Default_generated_results_2.png" alt="Default generated result 3"><br><img src="Default_generated_results_3.png" alt="Default generated result 4"><br><img src="Default_generated_results_4.png" alt="Default generated result 5"><br><img src="Default_generated_results_5.png" alt="Default generated result 6"></p>
+<p>Note: the pictures are generated in ParaView5.5.0. There is a trick to display the 2D results in a kind of 3D surface style. The filter needs to be used is called “Warp By Scalar”.</p>
+<p>Nevertheless, for 3D results, the “Warp By Scalar” may not be extremely useful. In this situation, we need to use “Warp By Vector” filter. (For more details, please check the note of step-4.)</p>
+<p>The computaion log is shown as follows,<br>Cycle 0:<br>   Number of active cells: 20<br>   Total number of cells: 20<br>   Number of degrees of freedom: 25<br>   13 CG iterations needed to obtain convergence.<br>Cycle 1:<br>   Number of active cells: 80<br>   Total number of cells: 100<br>   Number of degrees of freedom: 89<br>   17 CG iterations needed to obtain convergence.<br>Cycle 2:<br>   Number of active cells: 320<br>   Total number of cells: 420<br>   Number of degrees of freedom: 337<br>   29 CG iterations needed to obtain convergence.<br>Cycle 3:<br>   Number of active cells: 1280<br>   Total number of cells: 1700<br>   Number of degrees of freedom: 1313<br>   51 CG iterations needed to obtain convergence.<br>Cycle 4:<br>   Number of active cells: 5120<br>   Total number of cells: 6820<br>   Number of degrees of freedom: 5185<br>   94 CG iterations needed to obtain convergence.<br>Cycle 5:<br>   Number of active cells: 20480<br>   Total number of cells: 27300<br>   Number of degrees of freedom: 20609<br>   180 CG iterations needed to obtain convergence.</p>
+<h2 id="Now-I-will-go-through-some-the-possible-extensions-thought-out-by-myself"><a href="#Now-I-will-go-through-some-the-possible-extensions-thought-out-by-myself" class="headerlink" title="Now I will go through some the possible extensions thought out by myself."></a>Now I will go through some the possible extensions thought out by myself.</h2><ol>
+<li><p>Change the output file format to vtk.</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step5&lt;dim&gt;::output_results(const unsigned int cycle) const</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	DataOut&lt;dim&gt; data_out;</span></span><br><span class="line"><span class="code">	data_out.attach_dof_handler(dof_handler);</span></span><br><span class="line"><span class="code">	data_out.add_data_vector(solution, "solution");</span></span><br><span class="line"><span class="code">	data_out.build_patches();</span></span><br><span class="line">//	DataOutBase::EpsFlags eps_flags;</span><br><span class="line">//	eps<span class="emphasis">_flags.z_</span>scaling = 4.;</span><br><span class="line">//	eps<span class="emphasis">_flags.azimut_</span>angle = 40.;</span><br><span class="line">//	eps<span class="emphasis">_flags.turn_</span>angle   = 10.;</span><br><span class="line">//	data<span class="emphasis">_out.set_</span>flags(eps_flags);</span><br><span class="line"></span><br><span class="line"><span class="code">	// vtk files names, added by zzd</span></span><br><span class="line"><span class="code">	std::ofstream output("solution-" + std::to_string(cycle) + ".vtk");</span></span><br><span class="line">//	std::ofstream output("solution-" + std::to_string(cycle) + ".eps");</span><br><span class="line">//	data<span class="emphasis">_out.write_</span>eps(output);</span><br><span class="line"><span class="code">	data_out.write_vtk(output);  // vtk output, added by zzd</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Change precondition of the conjugate gradient algorithm</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step5&lt;dim&gt;::solve()</span><br><span class="line">&#123;</span><br><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step5&lt;dim&gt;::solve()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	SolverControl solver_control(1000, 1e-12);</span></span><br><span class="line"><span class="code">	SolverCG&lt;&gt;    solver(solver_control);</span></span><br><span class="line"><span class="code">	PreconditionSSOR&lt;&gt; preconditioner;</span></span><br><span class="line"><span class="code">	preconditioner.initialize(system_matrix, 1.2);</span></span><br><span class="line"><span class="code">	solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity()); // added by zzd</span></span><br><span class="line">//	solver.solve(system<span class="emphasis">_matrix, solution, system_</span>rhs, preconditioner);</span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   " &lt;&lt; solver_control.last_step()</span></span><br><span class="line"><span class="code">            		&lt;&lt; " CG iterations needed to obtain convergence." &lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>A preconditioned conjugate gradient (CG) algorithm has been used in step-5.</p>
+<p>Previously, the PreconditionIdentity has been used, which is exactly same as no precondition for the CG algorithm.</p>
+<p>So Now we will try to change back to the PreconditionIdentity to see how is the results.</p>
+<p><img src="Default_generated_results_5_noPreconditioner.png" alt="Default generated result 6 without preconditioner"></p>
+<p>The computation log is shown as follows,<br>Cycle 0:<br>   Number of active cells: 20<br>   Total number of cells: 20<br>   Number of degrees of freedom: 25<br>   5 CG iterations needed to obtain convergence.<br>Cycle 1:<br>   Number of active cells: 80<br>   Total number of cells: 100<br>   Number of degrees of freedom: 89<br>   19 CG iterations needed to obtain convergence.<br>Cycle 2:<br>   Number of active cells: 320<br>   Total number of cells: 420<br>   Number of degrees of freedom: 337<br>   72 CG iterations needed to obtain convergence.<br>Cycle 3:<br>   Number of active cells: 1280<br>   Total number of cells: 1700<br>   Number of degrees of freedom: 1313<br>   164 CG iterations needed to obtain convergence.<br>Cycle 4:<br>   Number of active cells: 5120<br>   Total number of cells: 6820<br>   Number of degrees of freedom: 5185<br>   366 CG iterations needed to obtain convergence.<br>Cycle 5:<br>   Number of active cells: 20480<br>   Total number of cells: 27300<br>   Number of degrees of freedom: 20609<br>   778 CG iterations needed to obtain convergence.</p>
+<p>From the comparison of the the above info. to that of the situation with preconditioner, we can find that without preconditioner, the iterations taken to obtain convergence become much larger (eg. 778 vs. 180 iterations). So this implies the preconditioner should be very important.</p>
+<ol start="3">
+<li>[Provided in deal.ii official tutorial] Tips about higher efficent programming:<br>a. Using “try &amp; check” assertions is helpful for finding bugs in codes.<br>b. The assertions should only be used in debug mode not optimized mode. The switch is in this way，<br> make debug<br> make release</li>
+</ol>
+<p>The following is an example. We added Assert(dim==3, ExcInternalError()) in the “coefficient” function,</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// head file for exceptions in deal.ii, added by zzd</span><br><span class="line"><span class="section">#include &lt;deal.II/base/exceptions.h&gt;  </span></span><br><span class="line"></span><br><span class="line">template &lt;int dim&gt;</span><br><span class="line">double coefficient(const Point&lt;dim&gt; &amp;p)</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	Assert(dim == 3, ExcInternalError()); // assert study, added by zzd</span></span><br><span class="line"><span class="code">	if (p.square() &lt; 0.5 * 0.5)</span></span><br><span class="line"><span class="code">		return 20;</span></span><br><span class="line"><span class="code">	else</span></span><br><span class="line"><span class="code">		return 1;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>And after we run the program, the error as following appeared,</p>
+<p>An error occurred in line &lt;72&gt; of file &lt;/home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5.cc&gt; in function<br>    double coefficient(const dealii::Point<dim>&amp;) [with int dim = 2]<br>The violated condition was:<br>    dim == 3<br>Additional information:<br>    This exception – which is used in many places in the library – usually indicates that some condition which the author of the code thought must be satisfied at a certain point in an algorithm, is not fulfilled. An example would be that the first part of an algorithm sorts elements of an array in ascending order, and a second part of the algorithm later encounters an element that is not larger than the previous one.</dim></p>
+<p>There is usually not very much you can do if you encounter such an exception since it indicates an error in deal.II, not in your own program. Try to come up with the smallest possible program that still demonstrates the error and contact the deal.II mailing lists with it to obtain help.</p>
+<p>Stacktrace:</p>
+<p>#0  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: double coefficient&lt;2&gt;(dealii::Point&lt;2, double&gt; const&amp;)</p>
+<p>#1  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: Step5&lt;2&gt;::assemble_system()</p>
+<p>#2  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: Step5&lt;2&gt;::run()</p>
+<p>#3  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: main</p>
+<p>However, when we use “make release” to build the program and run it, there is no such error notification anymore even we do not delete the piece of code: “Assert(dim==3, ExcInternalError())”.</p>
+<ol start="4">
+<li>Change the nonconstant coefficients</li>
+</ol>
+<p>Change the nonconstant coefficients from 20 to 2 with in the p.square&lt;0.5*0.5 range.</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">double coefficient(const Point&lt;dim&gt; &amp;p)</span><br><span class="line">&#123;</span><br><span class="line">//	Assert(dim == 3, ExcInternalError()); // assert study, added by zzd</span><br><span class="line"><span class="code">	if (p.square() &lt; 0.5 * 0.5)</span></span><br><span class="line">//		return 20;</span><br><span class="line"><span class="code">		return 2; // added by zzd</span></span><br><span class="line"><span class="code">	else</span></span><br><span class="line"><span class="code">		return 1;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>The generated results is shown in the below picture,<br><img src="Change_the_non_constant_coefficients_from_20_to_2.png" alt="Change the non constant coefficients from 20 to 2"><br>We can see that the top surface is not flatten anymore.</p>
+<p>When the coefficient is changed to 1,<br><img src="Change_the_non_constant_coefficients_from_20_to_1.png" alt="Change the non constant coefficients from 20 to 1"><br>We can see the geometry becomes very smooth. The top surface is no long distinguishable.</p>
+<p>When the coefficient is changed to 0.1,<br><img src="Change_the_non_constant_coefficients_from_20_to_0.1.png" alt="Change the non constant coefficients from 20 to 0.1"><br>We can see the top surface is larger deformed than the rest of the geometry. A very sharp hat has been generated.</p>
+<h2 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work:"></a>Future work:</h2><ol>
+<li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
+</li>
+<li><p>The “friend” and “virtual” in C++ is still not crystal clear and should be further studied.</p>
+</li>
+</ol>
+<p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_5.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_5.html</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Deal-ii/" rel="tag"># Deal.ii</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/24/Deal.ii-step-4/" rel="next" title="Deal.ii-step-4">
+                <i class="fa fa-chevron-left"></i> Deal.ii-step-4
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/28/Deal.ii-step-6/" rel="prev" title="Deal.ii-step-6">
+                Deal.ii-step-6 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Zhidong Brian Zhang</p>
+              <div class="site-description motion-element" itemprop="description">Learning is not learning.</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#We-can-run-the-default-code-and-derive-the-results"><span class="nav-number">1.</span> <span class="nav-text">We can run the default code and derive the results.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Now-I-will-go-through-some-the-possible-extensions-thought-out-by-myself"><span class="nav-number">2.</span> <span class="nav-text">Now I will go through some the possible extensions thought out by myself.</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Future-work"><span class="nav-number">3.</span> <span class="nav-text">Future work:</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhidong Brian Zhang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
