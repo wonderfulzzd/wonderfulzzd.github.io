@@ -484,7 +484,7 @@
 
 <p>You can see that post asset folder is besides the post source file, and has the same name with it.</p>
 <h2 id="Relative-Link-Based-on-Post-Source-File"><a href="#Relative-Link-Based-on-Post-Source-File" class="headerlink" title="Relative Link Based on Post Source File"></a>Relative Link Based on Post Source File</h2><p>First you need to install plugin <a href="https://www.npmjs.com/package/hexo-asset-link" target="_blank" rel="noopener"><code>hexo-asset-link</code></a>:</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> npm i --save hexo-asset-link</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> npm i --save hexo-asset-link</span></span><br></pre></td></tr></table></figure>
 
 <p>Then in markdown source file, the base-relative links scheme would look like this:</p>
 <figure class="highlight md"><figcaption><span>source/_posts/2019-02-14-Test-Post.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">![](2019-02-14-Test-Post/Test-Image-1.png)</span><br><span class="line">![](./2019-02-14-Test-Post/Test-Image-2.png)</span><br><span class="line">![](2019-02-14-Test-Post/Subdirectory/Test-Image-3.png)</span><br><span class="line">![](./2019-02-14-Test-Post/Subdirectory/Test-Image-4.png)</span><br></pre></td></tr></table></figure>
