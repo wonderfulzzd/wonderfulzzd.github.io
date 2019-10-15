@@ -465,11 +465,22 @@
       
         
           
-            <p><img src="topology_optimization.png" alt="Topology Optimization"></p>
-<p><img src="fictious_domain_method.png" alt="Fictious Domain Method"></p>
-<p>From: <a href="https://github.com/dealii/dealii/wiki/Gallery" target="_blank" rel="noopener">https://github.com/dealii/dealii/wiki/Gallery</a></p>
+            <p>
+              
 
+From: https://github.com/dealii/dealii/wiki/Gallery
+
+              
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/10/15/Deal-ii-Application-Gallery/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -610,13 +621,20 @@
       
         
           
-            <h2 id="袁亚湘"><a href="#袁亚湘" class="headerlink" title="袁亚湘"></a>袁亚湘</h2><p>袁亚湘（1960年1月－），湖南人，中国数学家，中国科学院数学与系统科学研究院研究员、博士生导师。</p>
-<p>现任国际工业与应用数学联盟（International Council for Industrial and Applied Mathematics）主席（President, 2019–2023），中国科协副主席（2016年），中国数学会理事长（2015 年），世界科学院院士（2015年），巴西科学院通讯院士（2014年），美国数学学会首届会士（2012年），中国科学院院士（2011年），美国工业与应用数学学会（Society for Industrial and Applied Mathematics）会士（2011年）。曾任中国运筹学会理事长（2004–2012），中国科学院数学与系统科学研究院副院长（1998–2007），中国科学院计算数学与科学工程计算研究所所长（1995－2007），科学与工程计算国家重点实验室主任（1996-2005)。</p>
-<p>出生于中国湖南省资兴县蓼江镇上村。十八岁考上湘潭大学，四年后考上中国科学院计算中心研究生，师从冯康教授。1982年11月起在剑桥大学应用数学与理论物理系攻读博士，师从 M.J.D. Powell 教授。1986年获博士学位。1985年10月至1988年9月在剑桥大学菲茨威廉姆学院工作 (Rutherford research fellow)，1988年回到中国在中国科学院计算中心工作。成为当时中科院最年轻的正研究员。</p>
-<p>袁亚湘专业为计算数学、应用数学、运筹学。主要研究方向最优化计算方法。</p>
-<p>From: wikipedia</p>
-
+            <p>
+              袁亚湘袁亚湘（1960年1月－），湖南人，中国数学家，中国科学院数学与系统科学研究院研究员、博士生导师。
+现任国际工业与应用数学联盟（International Council for Industrial and Applied Mathematics）主席（President, 2019–202
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/10/15/Yaxiang-Yuan/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -787,59 +805,20 @@
       
         
           
-            <pre><code>2019.09.28 Step-6 Study</code></pre><p>The step-6 is mainly talking about how deal.ii is doing adaptive mesh refinement.</p>
-<h2 id="We-can-run-the-default-code-and-derive-the-results"><a href="#We-can-run-the-default-code-and-derive-the-results" class="headerlink" title="We can run the default code and derive the results."></a>We can run the default code and derive the results.</h2><p><img src="Default_generated_result_0.png" alt="Default generated result 1"><br><img src="Default_generated_result_1.png" alt="Default generated result 2"><br><img src="Default_generated_result_2.png" alt="Default generated result 3"><br><img src="Default_generated_result_3.png" alt="Default generated result 4"><br><img src="Default_generated_result_4.png" alt="Default generated result 5"><br><img src="Default_generated_result_5.png" alt="Default generated result 6"><br><img src="Default_generated_result_6.png" alt="Default generated result 7"><br><img src="Default_generated_result_7.png" alt="Default generated result 8"></p>
-<h2 id="Now-I-will-go-through-some-the-possible-extensions-thought-out-by-myself"><a href="#Now-I-will-go-through-some-the-possible-extensions-thought-out-by-myself" class="headerlink" title="Now I will go through some the possible extensions thought out by myself."></a>Now I will go through some the possible extensions thought out by myself.</h2><ol>
-<li>Computational time test</li>
-</ol>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PreconditionSSOR&lt;&gt; preconditioner;</span><br><span class="line">preconditioner.initialization(system_matrix, 1.2);</span><br></pre></td></tr></table></figure>
-
-<p>Default SSOR preconditioner-16s.</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PreconditionSSOR&lt;&gt; preconditioner;</span><br><span class="line">preconditioner.initialization(system_matrix, 1.0);</span><br></pre></td></tr></table></figure>
-
-<p>Default SSOR preconditioner with 1.0 parameter-16s.</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PreconditionSSOR&lt;&gt; preconditioner;</span><br><span class="line">preconditioner.initialization(system_matrix, 0.5);</span><br></pre></td></tr></table></figure>
-
-<p>Default SSOR preconditioner with parameter 0.12-23s.</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PreconditionJacobi&lt;&gt; preconditioner;  // Jacobi as a preconditioner</span><br><span class="line">preconditioner.initialize(system_matrix);</span><br></pre></td></tr></table></figure>
-
-<p>Jacobi preconditioner-9s</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SparseILU&lt;double&gt; preconditioner;</span><br><span class="line">preconditioner.initialize(system_matrix);</span><br></pre></td></tr></table></figure>
-
-<p>Incomplete LU decomposition-11 s.</p>
-<p>Jacobi preconditioner is the fastest!</p>
-<ol start="2">
-<li>Better mesh<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template&lt;int dim&gt;</span><br><span class="line">void Step6&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	GridGenerator::hyper_ball (triangulation);</span></span><br><span class="line"><span class="code">	// after GridGenerator::hyper_ball is called the Triangulation has</span></span><br><span class="line"><span class="code">	// a SphericalManifold with id 0. We can use it again on the interior.</span></span><br><span class="line"><span class="code">	const Point&lt;dim&gt; mesh_center;</span></span><br><span class="line"><span class="code">	for (const auto &amp;cell : triangulation.active_cell_iterators())</span></span><br><span class="line"><span class="code">		if (mesh_center.distance (cell-&gt;center()) &gt; cell-&gt;diameter()/10)</span></span><br><span class="line"><span class="code">			cell-&gt;set_all_manifold_ids (0);</span></span><br><span class="line"><span class="code">	triangulation.refine_global (1);</span></span><br><span class="line"><span class="code">	//	GridGenerator::hyper_ball(triangulation);</span></span><br><span class="line"><span class="code">	//	triangulation.refine_global(1);</span></span><br><span class="line"><span class="code">	//	//	triangulation.execute_coarsening_and_refinement(/*1*/);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><img src="Mesh_crack_problem.png" alt="Mesh crack problem"><br>In addition, I found no improvement. Moreover, I didn’t understand the meaning of the following</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (mesh_center.distance (cell-&gt;center()) &gt; cell-&gt;diameter()/10)</span><br><span class="line"><span class="code">			cell-&gt;set_all_manifold_ids (0);</span></span><br></pre></td></tr></table></figure>
-
-<p>Further improved mesh:</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">template&lt;int dim&gt;</span><br><span class="line">void Step6&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	GridGenerator::hyper_ball (triangulation);</span></span><br><span class="line"><span class="code">	const Point&lt;dim&gt; mesh_center;</span></span><br><span class="line"><span class="code">	const double core_radius  = 1.0/5.0,</span></span><br><span class="line"><span class="code">			inner_radius = 1.0/3.0;</span></span><br><span class="line"><span class="code">	// Step 1: Shrink the inner cell</span></span><br><span class="line"><span class="code">	//</span></span><br><span class="line"><span class="code">	// We cannot get a circle out of the inner cell because of</span></span><br><span class="line"><span class="code">	// the degeneration problem mentioned above. Rather, shrink</span></span><br><span class="line"><span class="code">	// the inner cell to a core radius of 1/5 that stays</span></span><br><span class="line"><span class="code">	// sufficiently far away from the place where the</span></span><br><span class="line"><span class="code">	// coefficient will have a discontinuity and where we want</span></span><br><span class="line"><span class="code">	// to have cell interfaces that actually lie on a circle.</span></span><br><span class="line"><span class="code">	// We do this shrinking by just scaling the location of each</span></span><br><span class="line"><span class="code">	// of the vertices, given that the center of the circle is</span></span><br><span class="line"><span class="code">	// simply the origin of the coordinate system.</span></span><br><span class="line"><span class="code">	for (const auto &amp;cell : triangulation.active_cell_iterators())</span></span><br><span class="line"><span class="code">		if (mesh_center.distance (cell-&gt;center()) &lt; 1e-5)</span></span><br><span class="line"><span class="code">		&#123;</span></span><br><span class="line"><span class="code">			for (unsigned int v=0;</span></span><br><span class="line"><span class="code">					v &lt; GeometryInfo&lt;dim&gt;::vertices_per_cell;</span></span><br><span class="line"><span class="code">					++v)</span></span><br><span class="line"><span class="code">				cell-&gt;vertex(v) *= core_radius/mesh_center.distance (cell-&gt;vertex(v));</span></span><br><span class="line"><span class="code">		&#125;</span></span><br><span class="line"><span class="code">	// Step 2: Refine all cells except the central one</span></span><br><span class="line"><span class="code">	for (const auto &amp;cell : triangulation.active_cell_iterators())</span></span><br><span class="line"><span class="code">		if (mesh_center.distance (cell-&gt;center()) &gt;= 1e-5)</span></span><br><span class="line"><span class="code">			cell-&gt;set_refine_flag ();</span></span><br><span class="line"><span class="code">	triangulation.execute_coarsening_and_refinement ();</span></span><br><span class="line"><span class="code">	// Step 3: Resize the inner children of the outer cells</span></span><br><span class="line"><span class="code">	//</span></span><br><span class="line"><span class="code">	// The previous step replaced each of the four outer cells</span></span><br><span class="line"><span class="code">	// by its four children, but the radial distance at which we</span></span><br><span class="line"><span class="code">	// have intersected is not what we want to later refinement</span></span><br><span class="line"><span class="code">	// steps. Consequently, move the vertices that were just</span></span><br><span class="line"><span class="code">	// created in radial direction to a place where we need</span></span><br><span class="line"><span class="code">	// them.</span></span><br><span class="line"><span class="code">	for (const auto &amp;cell : triangulation.active_cell_iterators())</span></span><br><span class="line"><span class="code">		for (unsigned int v=0; v &lt; GeometryInfo&lt;dim&gt;::vertices_per_cell; ++v)</span></span><br><span class="line"><span class="code">		&#123;</span></span><br><span class="line"><span class="code">			const double dist = mesh_center.distance (cell-&gt;vertex(v));</span></span><br><span class="line"><span class="code">			if (dist &gt; core_radius*1.0001 &amp;&amp; dist &lt; 0.9999)</span></span><br><span class="line"><span class="code">				cell-&gt;vertex(v) *= inner_radius/dist;</span></span><br><span class="line"><span class="code">		&#125;</span></span><br><span class="line"><span class="code">	// Step 4: Apply curved manifold description</span></span><br><span class="line"><span class="code">	//</span></span><br><span class="line"><span class="code">	// As discussed above, we can not expect to subdivide the</span></span><br><span class="line"><span class="code">	// inner four cells (or their faces) onto concentric rings,</span></span><br><span class="line"><span class="code">	// but we can do so for all other cells that are located</span></span><br><span class="line"><span class="code">	// outside the inner radius. To this end, we loop over all</span></span><br><span class="line"><span class="code">	// cells and determine whether it is in this zone. If it</span></span><br><span class="line"><span class="code">	// isn't, then we set the manifold description of the cell</span></span><br><span class="line"><span class="code">	// and all of its bounding faces to the one that describes</span></span><br><span class="line"><span class="code">	// the spherical manifold already introduced above and that</span></span><br><span class="line"><span class="code">	// will be used for all further mesh refinement.</span></span><br><span class="line"><span class="code">	for (const auto &amp;cell : triangulation.active_cell_iterators())</span></span><br><span class="line"><span class="code">	&#123;</span></span><br><span class="line"><span class="code">		bool is_in_inner_circle = false;</span></span><br><span class="line"><span class="code">		for (unsigned int v=0; v &lt; GeometryInfo&lt;2&gt;::vertices_per_cell; ++v)</span></span><br><span class="line"><span class="code">			if (mesh_center.distance (cell-&gt;vertex(v)) &lt; inner_radius)</span></span><br><span class="line"><span class="code">			&#123;</span></span><br><span class="line"><span class="code">				is_in_inner_circle = true;</span></span><br><span class="line"><span class="code">				break;</span></span><br><span class="line"><span class="code">			&#125;</span></span><br><span class="line"><span class="code">		if (is_in_inner_circle == false)</span></span><br><span class="line"><span class="code">			// The Triangulation already has a SphericalManifold with</span></span><br><span class="line"><span class="code">			// manifold id 0 (see the documentation of</span></span><br><span class="line"><span class="code">			// GridGenerator::hyper_ball) so we just attach it to the outer</span></span><br><span class="line"><span class="code">			// ring here:</span></span><br><span class="line"><span class="code">			cell-&gt;set_all_manifold_ids (0);</span></span><br><span class="line"><span class="code">	&#125;</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//template&lt;int dim&gt;</span><br><span class="line">//void Step6&lt;dim&gt;::make_grid()</span><br><span class="line">//&#123;</span><br><span class="line">//	//	GridGenerator::hyper_ball (triangulation);</span><br><span class="line">//	//	// after GridGenerator::hyper_ball is called the Triangulation has</span><br><span class="line">//	//	// a SphericalManifold with id 0. We can use it again on the interior.</span><br><span class="line">//	//	const Point&lt;dim&gt; mesh_center;</span><br><span class="line">//	//	for (const auto &amp;cell : triangulation.active<span class="emphasis">_cell_</span>iterators())</span><br><span class="line">//	//		if (mesh_center.distance (cell-&gt;center()) &gt; cell-&gt;diameter()/10)</span><br><span class="line">//	//			cell-&gt;set<span class="emphasis">_all_</span>manifold_ids (0);</span><br><span class="line">//	//	triangulation.refine_global (3);</span><br><span class="line">//	GridGenerator::hyper_ball(triangulation);</span><br><span class="line">//	triangulation.refine_global(1);</span><br><span class="line">//	//	triangulation.execute<span class="emphasis">_coarsening_</span>and_refinement(/<span class="emphasis">*1*</span>/);</span><br><span class="line">//&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="Improved_mesh_generated_result_6.png" alt="Further improved mesh"></p>
-<p>The mesh is still not ideal in my opinion. I must miss something.</p>
-<ol start="3">
-<li>Play with coefficient<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">template&lt;int dim&gt;</span><br><span class="line">double coefficient (const Point&lt;dim&gt; &amp;p)</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	if ((p[0] &lt; 0) &amp;&amp; (p[1] &lt; 0))</span></span><br><span class="line"><span class="code">		return 1;</span></span><br><span class="line"><span class="code">	else if ((p[0] &gt;= 0) &amp;&amp; (p[1] &lt; 0))</span></span><br><span class="line"><span class="code">		return 10;</span></span><br><span class="line"><span class="code">	else if ((p[0] &lt; 0) &amp;&amp; (p[1] &gt;= 0))</span></span><br><span class="line"><span class="code">		return 100;</span></span><br><span class="line"><span class="code">	else if ((p[0] &gt;= 0) &amp;&amp; (p[1] &gt;= 0))</span></span><br><span class="line"><span class="code">		return 1000;</span></span><br><span class="line"><span class="code">	else</span></span><br><span class="line"><span class="code">	&#123;</span></span><br><span class="line"><span class="code">		Assert (false, ExcInternalError());</span></span><br><span class="line"><span class="code">		return 0;</span></span><br><span class="line"><span class="code">	&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><img src="Play_with_coefficient_6.png" alt="Play with coefficient 6"></p>
-<h2 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work:"></a>Future work:</h2><ol>
-<li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
-</li>
-<li><p>The “friend” and “virtual” in C++ is still not crystal clear and should be further studied.</p>
-</li>
-<li><p>I don’t understand how the error estimation inequality is derived.<br><img src="Error_estimation_inequality.png" alt="I don&#39;t understand how the error estimation inequality is derived."></p>
-</li>
-<li><p>Manifold unclear either.</p>
-</li>
-</ol>
-<p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_6.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_6.html</a></p>
-
+            <p>
+              2019.09.28 Step-6 StudyThe step-6 is mainly talking about how deal.ii is doing adaptive mesh refinement.
+We can run the default code and derive the re
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/28/Deal.ii-step-6/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1010,59 +989,20 @@
       
         
           
-            <pre><code>2019.09.25 Step-5 Study</code></pre><p>The step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh refinements.</p>
-<h2 id="We-can-run-the-default-code-and-derive-the-results"><a href="#We-can-run-the-default-code-and-derive-the-results" class="headerlink" title="We can run the default code and derive the results."></a>We can run the default code and derive the results.</h2><p><img src="Default_generated_results_0.png" alt="Default generated result 1"><br><img src="Default_generated_results_1.png" alt="Default generated result 2"><br><img src="Default_generated_results_2.png" alt="Default generated result 3"><br><img src="Default_generated_results_3.png" alt="Default generated result 4"><br><img src="Default_generated_results_4.png" alt="Default generated result 5"><br><img src="Default_generated_results_5.png" alt="Default generated result 6"></p>
-<p>Note: the pictures are generated in ParaView5.5.0. There is a trick to display the 2D results in a kind of 3D surface style. The filter needs to be used is called “Warp By Scalar”.</p>
-<p>Nevertheless, for 3D results, the “Warp By Scalar” may not be extremely useful. In this situation, we need to use “Warp By Vector” filter. (For more details, please check the note of step-4.)</p>
-<p>The computaion log is shown as follows,<br>Cycle 0:<br>   Number of active cells: 20<br>   Total number of cells: 20<br>   Number of degrees of freedom: 25<br>   13 CG iterations needed to obtain convergence.<br>Cycle 1:<br>   Number of active cells: 80<br>   Total number of cells: 100<br>   Number of degrees of freedom: 89<br>   17 CG iterations needed to obtain convergence.<br>Cycle 2:<br>   Number of active cells: 320<br>   Total number of cells: 420<br>   Number of degrees of freedom: 337<br>   29 CG iterations needed to obtain convergence.<br>Cycle 3:<br>   Number of active cells: 1280<br>   Total number of cells: 1700<br>   Number of degrees of freedom: 1313<br>   51 CG iterations needed to obtain convergence.<br>Cycle 4:<br>   Number of active cells: 5120<br>   Total number of cells: 6820<br>   Number of degrees of freedom: 5185<br>   94 CG iterations needed to obtain convergence.<br>Cycle 5:<br>   Number of active cells: 20480<br>   Total number of cells: 27300<br>   Number of degrees of freedom: 20609<br>   180 CG iterations needed to obtain convergence.</p>
-<h2 id="Now-I-will-go-through-some-the-possible-extensions-thought-out-by-myself"><a href="#Now-I-will-go-through-some-the-possible-extensions-thought-out-by-myself" class="headerlink" title="Now I will go through some the possible extensions thought out by myself."></a>Now I will go through some the possible extensions thought out by myself.</h2><ol>
-<li><p>Change the output file format to vtk.</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step5&lt;dim&gt;::output_results(const unsigned int cycle) const</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	DataOut&lt;dim&gt; data_out;</span></span><br><span class="line"><span class="code">	data_out.attach_dof_handler(dof_handler);</span></span><br><span class="line"><span class="code">	data_out.add_data_vector(solution, "solution");</span></span><br><span class="line"><span class="code">	data_out.build_patches();</span></span><br><span class="line">//	DataOutBase::EpsFlags eps_flags;</span><br><span class="line">//	eps<span class="emphasis">_flags.z_</span>scaling = 4.;</span><br><span class="line">//	eps<span class="emphasis">_flags.azimut_</span>angle = 40.;</span><br><span class="line">//	eps<span class="emphasis">_flags.turn_</span>angle   = 10.;</span><br><span class="line">//	data<span class="emphasis">_out.set_</span>flags(eps_flags);</span><br><span class="line"></span><br><span class="line"><span class="code">	// vtk files names, added by zzd</span></span><br><span class="line"><span class="code">	std::ofstream output("solution-" + std::to_string(cycle) + ".vtk");</span></span><br><span class="line">//	std::ofstream output("solution-" + std::to_string(cycle) + ".eps");</span><br><span class="line">//	data<span class="emphasis">_out.write_</span>eps(output);</span><br><span class="line"><span class="code">	data_out.write_vtk(output);  // vtk output, added by zzd</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Change precondition of the conjugate gradient algorithm</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step5&lt;dim&gt;::solve()</span><br><span class="line">&#123;</span><br><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step5&lt;dim&gt;::solve()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	SolverControl solver_control(1000, 1e-12);</span></span><br><span class="line"><span class="code">	SolverCG&lt;&gt;    solver(solver_control);</span></span><br><span class="line"><span class="code">	PreconditionSSOR&lt;&gt; preconditioner;</span></span><br><span class="line"><span class="code">	preconditioner.initialize(system_matrix, 1.2);</span></span><br><span class="line"><span class="code">	solver.solve(system_matrix, solution, system_rhs, PreconditionIdentity()); // added by zzd</span></span><br><span class="line">//	solver.solve(system<span class="emphasis">_matrix, solution, system_</span>rhs, preconditioner);</span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   " &lt;&lt; solver_control.last_step()</span></span><br><span class="line"><span class="code">            		&lt;&lt; " CG iterations needed to obtain convergence." &lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>A preconditioned conjugate gradient (CG) algorithm has been used in step-5.</p>
-<p>Previously, the PreconditionIdentity has been used, which is exactly same as no precondition for the CG algorithm.</p>
-<p>So Now we will try to change back to the PreconditionIdentity to see how is the results.</p>
-<p><img src="Default_generated_results_5_noPreconditioner.png" alt="Default generated result 6 without preconditioner"></p>
-<p>The computation log is shown as follows,<br>Cycle 0:<br>   Number of active cells: 20<br>   Total number of cells: 20<br>   Number of degrees of freedom: 25<br>   5 CG iterations needed to obtain convergence.<br>Cycle 1:<br>   Number of active cells: 80<br>   Total number of cells: 100<br>   Number of degrees of freedom: 89<br>   19 CG iterations needed to obtain convergence.<br>Cycle 2:<br>   Number of active cells: 320<br>   Total number of cells: 420<br>   Number of degrees of freedom: 337<br>   72 CG iterations needed to obtain convergence.<br>Cycle 3:<br>   Number of active cells: 1280<br>   Total number of cells: 1700<br>   Number of degrees of freedom: 1313<br>   164 CG iterations needed to obtain convergence.<br>Cycle 4:<br>   Number of active cells: 5120<br>   Total number of cells: 6820<br>   Number of degrees of freedom: 5185<br>   366 CG iterations needed to obtain convergence.<br>Cycle 5:<br>   Number of active cells: 20480<br>   Total number of cells: 27300<br>   Number of degrees of freedom: 20609<br>   778 CG iterations needed to obtain convergence.</p>
-<p>From the comparison of the the above info. to that of the situation with preconditioner, we can find that without preconditioner, the iterations taken to obtain convergence become much larger (eg. 778 vs. 180 iterations). So this implies the preconditioner should be very important.</p>
-<ol start="3">
-<li>[Provided in deal.ii official tutorial] Tips about higher efficent programming:<br>a. Using “try &amp; check” assertions is helpful for finding bugs in codes.<br>b. The assertions should only be used in debug mode not optimized mode. The switch is in this way，<br> make debug<br> make release</li>
-</ol>
-<p>The following is an example. We added Assert(dim==3, ExcInternalError()) in the “coefficient” function,</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// head file for exceptions in deal.ii, added by zzd</span><br><span class="line"><span class="section">#include &lt;deal.II/base/exceptions.h&gt;  </span></span><br><span class="line"></span><br><span class="line">template &lt;int dim&gt;</span><br><span class="line">double coefficient(const Point&lt;dim&gt; &amp;p)</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	Assert(dim == 3, ExcInternalError()); // assert study, added by zzd</span></span><br><span class="line"><span class="code">	if (p.square() &lt; 0.5 * 0.5)</span></span><br><span class="line"><span class="code">		return 20;</span></span><br><span class="line"><span class="code">	else</span></span><br><span class="line"><span class="code">		return 1;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>And after we run the program, the error as following appeared,</p>
-<p>An error occurred in line &lt;72&gt; of file &lt;/home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5.cc&gt; in function<br>    double coefficient(const dealii::Point<dim>&amp;) [with int dim = 2]<br>The violated condition was:<br>    dim == 3<br>Additional information:<br>    This exception – which is used in many places in the library – usually indicates that some condition which the author of the code thought must be satisfied at a certain point in an algorithm, is not fulfilled. An example would be that the first part of an algorithm sorts elements of an array in ascending order, and a second part of the algorithm later encounters an element that is not larger than the previous one.</dim></p>
-<p>There is usually not very much you can do if you encounter such an exception since it indicates an error in deal.II, not in your own program. Try to come up with the smallest possible program that still demonstrates the error and contact the deal.II mailing lists with it to obtain help.</p>
-<p>Stacktrace:</p>
-<p>#0  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: double coefficient&lt;2&gt;(dealii::Point&lt;2, double&gt; const&amp;)</p>
-<p>#1  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: Step5&lt;2&gt;::assemble_system()</p>
-<p>#2  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: Step5&lt;2&gt;::run()</p>
-<p>#3  /home/wonderfulzzd/eclipse-wp/std_deal.ii/examples/step-5/step-5: main</p>
-<p>However, when we use “make release” to build the program and run it, there is no such error notification anymore even we do not delete the piece of code: “Assert(dim==3, ExcInternalError())”.</p>
-<ol start="4">
-<li>Change the nonconstant coefficients</li>
-</ol>
-<p>Change the nonconstant coefficients from 20 to 2 with in the p.square&lt;0.5*0.5 range.</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">double coefficient(const Point&lt;dim&gt; &amp;p)</span><br><span class="line">&#123;</span><br><span class="line">//	Assert(dim == 3, ExcInternalError()); // assert study, added by zzd</span><br><span class="line"><span class="code">	if (p.square() &lt; 0.5 * 0.5)</span></span><br><span class="line">//		return 20;</span><br><span class="line"><span class="code">		return 2; // added by zzd</span></span><br><span class="line"><span class="code">	else</span></span><br><span class="line"><span class="code">		return 1;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>The generated results is shown in the below picture,<br><img src="Change_the_non_constant_coefficients_from_20_to_2.png" alt="Change the non constant coefficients from 20 to 2"><br>We can see that the top surface is not flatten anymore.</p>
-<p>When the coefficient is changed to 1,<br><img src="Change_the_non_constant_coefficients_from_20_to_1.png" alt="Change the non constant coefficients from 20 to 1"><br>We can see the geometry becomes very smooth. The top surface is no long distinguishable.</p>
-<p>When the coefficient is changed to 0.1,<br><img src="Change_the_non_constant_coefficients_from_20_to_0.1.png" alt="Change the non constant coefficients from 20 to 0.1"><br>We can see the top surface is larger deformed than the rest of the geometry. A very sharp hat has been generated.</p>
-<h2 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work:"></a>Future work:</h2><ol>
-<li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
-</li>
-<li><p>The “friend” and “virtual” in C++ is still not crystal clear and should be further studied.</p>
-</li>
-</ol>
-<p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_5.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_5.html</a></p>
-
+            <p>
+              2019.09.25 Step-5 StudyThe step-5 is mainly talking about how deal.ii is doing loop for simulations with multiple mesh refinements.
+We can run the def
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/25/Deal.ii-step-5/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1233,52 +1173,19 @@
       
         
           
-            <pre><code>2019.09.24 Step-4 Study</code></pre><p>The step-4 is mainly talking about how deal.ii is dealing with problems with different dimensions by its featured dimensionless programming techniques.</p>
-<p>We can run the default code and derive the results.</p>
-<p><img src="Default_generated_results_2D.png" alt="Default generated result 2D"><br><img src="Default_generated_results_3D.png" alt="Default generated result 3D"></p>
-<p>Note: the pictures are generated in ParaView5.5.0. There is a trick to display the 2D results in a kind of 3D surface style. The filter needs to be used is called “Warp By Scalar”.</p>
-<p>Nevertheless, for 3D results, the “Warp By Scalar” may not be extremely useful. In this situation, we need to use “Warp By Vector” filter.</p>
-<p>First, we need to use “Extract surface” filter, and then “Generate Surface Normals”. Last, use the “Warp By Vector”. As shown in the below figure,<br><img src="Default_generated_results_3D_warped_by_vector.png" alt="Default generated result 3D warped by vector"><br>However, we can see there are multiple slices generated around the cube. Why this happened? We clipped the block after the “Extract surface” filter and found that there are many small boxes generated, which are the inner grid being regarded as surfaces too by the “Extract surface” filter.<br><img src="Inner_grid_extracted_along_with_the_exterior.png" alt="Inner grid extracted along with the exterior"></p>
-<p>And later each of the slice will be corresponding to a slice shown in previous figure. So now the focus is to remove the inner grid before the “Extract surface” filter and only extract the most exterior sufaces.</p>
-<p>Thus, the “Clean To Grid” filter should be used now. After adding it before the “Extract surface”, we can see the small boxes inside the cube have disappeared.<br><img src="No_inner_grid_extracted_along_with_the_exterior.png" alt="No inner grid extracted along with the exterior"></p>
-<p>Therefore, the final warped result becomes more reasonable now as shown in the below figure.<br><img src="Default_generated_results_3D_warped_by_vector_after_Clean_To_Grid_filter_being_used.png" alt="Default generated result 3D warped by vector after Clean To Grid filter being used"></p>
-<p>Now I will go through all the possible extensions, which are similar to those in step-3.</p>
-<ol>
-<li>Changing the mesh to hyper shell used previously and L-shape.</li>
-</ol>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step4&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	// hyper shell, added by zzd</span></span><br><span class="line"><span class="code">	Point&lt;dim&gt; center (dim==2 ? Point&lt;dim&gt;(0,1): Point&lt;dim&gt;(0,0,1));</span></span><br><span class="line"><span class="code">	const double inner_radius = 0.5, outer_radius = 1.0;</span></span><br><span class="line"><span class="code">	GridGenerator::hyper_shell(triangulation, center, inner_radius, outer_radius, (dim==2 ? 10:12));</span></span><br><span class="line"><span class="code">	triangulation.refine_global(4);</span></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   Number of active cells: " &lt;&lt; triangulation.n_active_cells()</span></span><br><span class="line"><span class="code">            				&lt;&lt; std::endl</span></span><br><span class="line"><span class="code">							&lt;&lt; "   Total number of cells: " &lt;&lt; triangulation.n_cells()</span></span><br><span class="line"><span class="code">						&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="hyper_shell_results_2D_with_original_geometry.png" alt="Hyper_shell_results 2D_with_original geometry"></p>
-<p><img src="hyper_shell_results_3D_with_original_geometry.png" alt="Hyper_shell_results 3D with original geometry"></p>
-<p>We can see from the result that the problem we raised in the end of step-2 and step-3 hasn’t happened this time because we use refine_global this time.</p>
-<p>It looks like that the shell is fixed in the inner sphere because the smaller shell in the middle is the original shell shape, the most outside slice is the one after deformation. The shell is inflatted with the inner sphere fixed during this simulation (compare the previous figure and the following one).<br><img src="hyper_shell_results_3D_without_original_geometry.png" alt="hyper shell results 3D without original geometry"><br>However, I am still not sure about the boundary_values. Further investigation is welcome. </p>
-<p>For L-shape </p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// hyper L shape, added by zzd</span><br><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step4&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	GridGenerator::hyper_L(triangulation, -1, 1);   // L-shape structure, added by zzd</span></span><br><span class="line"><span class="code">	triangulation.refine_global(4);</span></span><br><span class="line"></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   Number of active cells: " &lt;&lt; triangulation.n_active_cells()</span></span><br><span class="line"><span class="code">            				&lt;&lt; std::endl</span></span><br><span class="line"><span class="code">							&lt;&lt; "   Total number of cells: " &lt;&lt; triangulation.n_cells()</span></span><br><span class="line"><span class="code">							&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="L_shape_results_2D.png" alt="L_shape_results 2D"><br><img src="L_shape_results_3D.png" alt="L_shape_results 3D"></p>
-<p>The L-shape looks good here.</p>
-<ol start="2">
-<li>Changing the boundary condition.<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">template &lt;int dim&gt;</span><br><span class="line">void Step4&lt;dim&gt;::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	GridGenerator::hyper_cube(triangulation, -1, 1);</span></span><br><span class="line"><span class="code">	triangulation.begin_active()-&gt;face(0)-&gt;set_boundary_id(1); // added by zzd</span></span><br><span class="line"><span class="code">	triangulation.refine_global(4);</span></span><br><span class="line"></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "   Number of active cells: " &lt;&lt; triangulation.n_active_cells()</span></span><br><span class="line"><span class="code">            				&lt;&lt; std::endl</span></span><br><span class="line"><span class="code">							&lt;&lt; "   Total number of cells: " &lt;&lt; triangulation.n_cells()</span></span><br><span class="line"><span class="code">							&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><img src="changing_the_boundary_conditions_2D.png" alt="Changing the boundary conditions 2D"><br><img src="changing_the_boundary_conditions_3D.png" alt="Changing the boundary conditions 3D"></p>
-<ol start="3">
-<li>Modifying the type of the boundary conditions <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">std::map&lt;types::global_dof_index, double&gt; boundary_values;</span><br><span class="line">VectorTools::interpolate<span class="emphasis">_boundary_</span>values(dof_handler,</span><br><span class="line"><span class="code">		0,</span></span><br><span class="line"><span class="code">		//BoundaryValues&lt;dim&gt;(),</span></span><br><span class="line"><span class="code">		Functions::ZeroFunction&lt;dim&gt;(),  // added by zzd</span></span><br><span class="line"><span class="code">		boundary_values);</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><img src="modifying_the_boundary_conditions_2D.png" alt="Modifying the boundary conditions 2D"><br><img src="modifying_the_boundary_conditions_3D.png" alt="Modifying the boundary conditions 3D"></p>
-<p>Future work:</p>
-<ol>
-<li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
-</li>
-<li><p>The “friend” in C++ is still not very clear and should be further studied.</p>
-</li>
-</ol>
-<p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_4.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_4.html</a></p>
-
+            <p>
+              2019.09.24 Step-4 StudyThe step-4 is mainly talking about how deal.ii is dealing with problems with different dimensions by its featured dimensionless
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/24/Deal.ii-step-4/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1449,45 +1356,19 @@
       
         
           
-            <pre><code>2019.09.23 Step-3 Study</code></pre><p>The step-3 is the first for really calculating something in Deal.II and mainly talking about the solving process of the Poisson’s equation as an example.</p>
-<p>We can run the default code and derive the results.</p>
-<p><img src="default_generated_results.png" alt="Default generated results"></p>
-<p>This example only considers the displacement in the x direction. So the DoF is the number of the nodes when using Q1 elements. </p>
-<p>Now I will go through all the possible extensions suggested on the Deal.II online tutorial.</p>
-<ol>
-<li>Changing the mesh to hyper shell used previously and L-shape.</li>
-</ol>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// hyper shell mesh, added by zzd</span><br><span class="line">void Step3::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	const Point&lt;2&gt; center(1, 0);</span></span><br><span class="line"><span class="code">	const double   inner_radius = 0.5, outer_radius = 1.0;</span></span><br><span class="line"><span class="code">	GridGenerator::hyper_shell(</span></span><br><span class="line"><span class="code">			triangulation, center, inner_radius, outer_radius, 5);</span></span><br><span class="line"></span><br><span class="line"><span class="code">	for (unsigned int step = 0; step &lt; 3; ++step)</span></span><br><span class="line"><span class="code">	&#123;</span></span><br><span class="line"><span class="code">		for (auto &amp;cell : triangulation.active_cell_iterators())</span></span><br><span class="line"><span class="code">			for (unsigned int v = 0; v &lt; GeometryInfo&lt;2&gt;::vertices_per_cell; ++v)</span></span><br><span class="line"><span class="code">			&#123;</span></span><br><span class="line"><span class="code">				const double distance_from_center =</span></span><br><span class="line"><span class="code">						center.distance(cell-&gt;vertex(v));</span></span><br><span class="line"></span><br><span class="line"><span class="code">				if (std::fabs(distance_from_center - inner_radius) &lt; 1e-10)</span></span><br><span class="line"><span class="code">				&#123;</span></span><br><span class="line"><span class="code">					cell-&gt;set_refine_flag();</span></span><br><span class="line"><span class="code">					break;</span></span><br><span class="line"><span class="code">				&#125;</span></span><br><span class="line"><span class="code">			&#125;</span></span><br><span class="line"><span class="code">		triangulation.execute_coarsening_and_refinement();</span></span><br><span class="line"><span class="code">	&#125;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-<p><img src="hyper_shell_results.png" alt="Hyper_shell_results"></p>
-<p>We can see from the result that the problem we raised in the end of step-2 has some negative influence here. See the points of the mesh has been detached from its neighbours (see the sharp point at the top of the “cone” shape). Therefore, I need to further investigate this problem.</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// hyper L shape, added by zzd</span><br><span class="line">void Step3::make_grid()</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">    const unsigned int initial_global_refinement       = 4;</span></span><br><span class="line"><span class="code">	const double   left = -1.0, right = 1.0;</span></span><br><span class="line"><span class="code">	GridGenerator::hyper_L(</span></span><br><span class="line"><span class="code">			triangulation, left, right, false);</span></span><br><span class="line"><span class="code">	triangulation.refine_global(initial_global_refinement);</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="L_shape_results.png" alt="L_shape_results"></p>
-<p>The L-shape looks good here.</p>
-<ol start="2">
-<li>Changing the boundary condition.<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">std::map&lt;types::global_dof_index, double&gt; boundary_values;</span><br><span class="line"><span class="code">	VectorTools::interpolate_boundary_values(dof_handler,</span></span><br><span class="line"><span class="code">			0,</span></span><br><span class="line"><span class="code">			ConstantFunction&lt;2&gt; (100),    // added by zzd</span></span><br><span class="line"><span class="code">			//Functions::ZeroFunction&lt;2&gt;(),</span></span><br><span class="line"><span class="code">			boundary_values);</span></span><br><span class="line"><span class="code">	MatrixTools::apply_boundary_values(boundary_values,</span></span><br><span class="line"><span class="code">			system_matrix,</span></span><br><span class="line"><span class="code">			solution,</span></span><br><span class="line"><span class="code">			system_rhs);</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><img src="changing_the_boundary_conditions.png" alt="Changing the boundary conditions"></p>
-<ol start="3">
-<li>Modifying the type of the boundary conditions <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void Step3::make_grid(int refinements)</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	GridGenerator::hyper_cube(triangulation, -1, 1);</span></span><br><span class="line"><span class="code">	triangulation.begin_active()-&gt;face(0)-&gt;set_boundary_id(1); // added by zzd</span></span><br><span class="line"><span class="code">	triangulation.refine_global(refinements);</span></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "Number of active cells: " &lt;&lt; triangulation.n_active_cells()</span></span><br><span class="line"><span class="code">            		&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p><img src="modifying_the_boundary_conditions.png" alt="Modifying the boundary conditions"></p>
-<p>4.Observe convergence</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">void Step3::output_results() const</span><br><span class="line">&#123;</span><br><span class="line"><span class="code">	DataOut&lt;2&gt; data_out;</span></span><br><span class="line"><span class="code">	data_out.attach_dof_handler(dof_handler);</span></span><br><span class="line"><span class="code">	data_out.add_data_vector(solution, "solution");</span></span><br><span class="line"><span class="code">	data_out.build_patches();</span></span><br><span class="line"><span class="code">	std::ofstream output("solution.gpl");</span></span><br><span class="line"><span class="code">	data_out.write_gnuplot(output);</span></span><br><span class="line"></span><br><span class="line"><span class="code">	// observe the convergence, added by zzd</span></span><br><span class="line"><span class="code">	std::cout &lt;&lt; "Solution at (1/3,1/3): " \</span></span><br><span class="line"><span class="code">			&lt;&lt; VectorTools::point_value (dof_handler, solution, \</span></span><br><span class="line"><span class="code">					Point&lt;2&gt;(1./3, 1./3)) \</span></span><br><span class="line"><span class="code">					&lt;&lt; std::endl;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><img src="observing_convergency.png" alt="Observing convergence"></p>
-<p>This is the convergence info. with 10 refinements.</p>
-<p>We can see it is same as the 9th refinements, which imply the simulation has been converged successfully.</p>
-<p>However, this mesh (1024*1024=104,8576, over 1 million) is too big to be shown by gnuplot on my laptop.</p>
-<p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_3.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_3.html</a></p>
-
+            <p>
+              2019.09.23 Step-3 StudyThe step-3 is the first for really calculating something in Deal.II and mainly talking about the solving process of the Poisson
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/23/Deal.ii-step-3/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1646,36 +1527,21 @@
       
         
           
-            <p>Completely copy from:</p>
-<p><a href="https://caendkoelsch.wordpress.com/2018/11/29/direct-vs-iterative-solvers-in-fem/" target="_blank" rel="noopener">https://caendkoelsch.wordpress.com/2018/11/29/direct-vs-iterative-solvers-in-fem/</a></p>
-<p>Direct vs. iterative solvers in FEM<br>November 29, 2018 caendkoelschLeave a comment    </p>
-<p>In FEM we usually solve for the equation [K]{u} = {f}</p>
-<p>Here [K] is referred to as the stiffness matrix; {f} as the force vector and {u} as the set of unknowns.</p>
-<p>The classification of solvers into direct and iterative mainly depends on the method of getting {u} in the linear equation. The selection of the solver depends on the process mechanics and problem size and is nowadays automatically chosen by most of the commercially available FE tools.</p>
-<p>But as an engineer and analyst, it is good to know the back-end of what’s happening with respect to the solver selection. So here we go with a non-mathematical explanation of the differences between direct and iterative solvers used in FEM.</p>
-<p>Direct Solver:</p>
-<p>In the case of direct solver, you find the inverse of matrix [K] and then multiply with {f}. As this method involves inverting the matrix, it is mostly preferred for computationally less expensive problems. From literature, I understand that the direct solvers are effective for problems with less than 100,000 unknowns. And the memory requirements are higher and the ability to solve the equations in parallel is difficult but not impossible.</p>
-<p>Usually the direct solvers can be thought of as a variant of LU decomposition method where the [K] matrix is decomposed into a lower and upper triangular matrix (L and U respectively) in such a way that</p>
-<p>[K] = [L][U]</p>
-<p>More details about the method can be found here.</p>
-<p>FE developers exploit the sparsity patterns in the stiffness matrix to increase the computational efficiency in the case of direct solvers by using established algorithms for solving sparse matrices.</p>
-<p>What is a sparse matrix? – Read here.</p>
-<p>Iterative Solver:</p>
-<p>In the case of iterative solver, since finding inverse of a matrix is very time consuming if it is a very big matrix, they start with an initial solution(guess) and then gradually move towards the correct solution for {u}. Till a reasonably solution that satisfies the stop criterion (a tolerance value, usually) is obtained, the solver keeps iterating.</p>
-<p>So, this is also not an exact solution but an educated guess which is approximate. The search direction, i.e. the direction in which the initial guess moves towards the final solution is verified by using a variant of conjugate gradient method.</p>
-<p>Iterative solvers are suitable for computationally big problems as they often can be parallelized more efficiently using algorithms. But there is a catch. For solving the linearized equations using the iterative solvers, your matrix needs to be properly conditioned. To quote Prof. Wolfgang Bangerth’s words, “The art of devising a good iterative solver is to devise a good preconditioner!”.</p>
-<p>Report this ad<br>Report this ad</p>
-<p>In the case of iterative solvers, sometimes oscillatory behavior might be observed. This means the initial solution does not move gradually towards the correct approximate solution and rather diverge. As an end user, you can find this by constantly checking the numerical output that is written by the solver. Unusually long computational times can also be a good indicator for this kind of a problem.</p>
-<p>So how can you fix it?</p>
-<p>Again, this method is something that has worked for me most of the time. My approach would be to check the model thoroughly if it is constrained properly. As in, try to fix the dofs in your analysis domain that might not have an impact on the simulation results. By doing this, you are reducing the potential errors gradually and assisting the solver converge fast.</p>
-<p>And this is a very simplified and non-mathematical explanation of the topic which could be useful for a beginner or an application engineer who just wants to know which solver to use based on the problem context.</p>
-<p>For a detailed and mathematical explanation, I would recommend going through this link. <a href="https://link.springer.com/chapter/10.1007%2F978-3-319-59038-7_5" target="_blank" rel="noopener">https://link.springer.com/chapter/10.1007%2F978-3-319-59038-7_5</a></p>
-<p>Prost!</p>
-<p>~ Renga</p>
-<p>Other references:</p>
-<p>[1] <a href="http://www.math.colostate.edu/~bangerth/videos/676/slides.34.pdf" target="_blank" rel="noopener">http://www.math.colostate.edu/~bangerth/videos/676/slides.34.pdf</a></p>
-
+            <p>
+              Completely copy from:
+https://caendkoelsch.wordpress.com/2018/11/29/direct-vs-iterative-solvers-in-fem/
+Direct vs. iterative solvers in FEMNovember 29
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/23/Copy-Direct-and-iterative-solvers/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1846,33 +1712,20 @@
       
         
           
-            <pre><code>2019.09.21 Step-2 Study</code></pre><p>The step-2 is mainly talking about the degree of freedom (Dof) of a FEM problem.</p>
-<p>First, let’s generate the default mesh, where the process is same as the one in step-1.</p>
-<p><img src="Default_generated_mesh.png" alt="Default generated mesh"></p>
-<p>The default results can also be generated, which are the sparsity patterns before optimization and after.</p>
-<p><img src="sparsity_pattern1.svg" alt="Sparsity pattern before optimization"><br><img src="sparsity_pattern2.svg" alt="Sparsity pattern after optimization"></p>
-<p>From the results, we can see, after optimization, the band of width of the FEM system matrix has been reduced, which is beneficial.</p>
-<p>Now we will try some thing else,</p>
-<p>If we remove reset all the manifold by using </p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">triangulation.reset<span class="emphasis">_all_</span>manifolds();</span><br></pre></td></tr></table></figure>
-
-<p>we can get a little bit strange mesh,</p>
-<p><img src="Default_generated_mesh_remove_all_manifold.png" alt="Default generated mesh remove all manifold"></p>
-<p>This is because the reason we discussed in step-1.</p>
-<p>Now we will keep using the reset manifold code and use a smaller initial grid number, say 4, without mesh refinement function as well.</p>
-<p><img src="A_very_coarse_shell_mesh.png" alt="A very coarse shell mesh"></p>
-<p>Now we also generate the sparsity patterns of this coarse mesh.</p>
-<p><img src="sparsity_pattern1_coarse_mesh.png" alt="Sparsity pattern before optimization"><br><img src="sparsity_pattern2_coarse_mesh.png" alt="Sparsity pattern after optimization"></p>
-<p>From the figures, we can see that the total DoF is 8 because they are showing 8-by-8 matrices.<br>However, we have 8 nodes in the mesh. If each node has two DoF (x, y), we should end up with 16-by-16 matrices. So what is the problem?</p>
-<p>The answer is still not clear for me yet. But I guess the “dofhandler” only considers one node as one DoF. So it can be conviniently dimensionless?<br>I think I found the answer from the official tutorial document: Describing “degrees of freedom” in this context requires us to simply enumerate the basis functions of the space Vh. For Q1 elements this means simply enumerating the vertices of the mesh in some way, but for higher order elements, one also has to enumerate the shape functions that are associated with edges, faces, or cell interiors of the mesh.</p>
-<p>Moreover, there is one sentence in step-3: “the index of a particular degree of freedom within the DoFHandler object that is defined on top of a triangulation (as opposed to the index of a particular degree of freedom within a particular cell). “</p>
-<p>So my guess should be correct.</p>
-<p>One more thing needs to be investigated is about the mesh.</p>
-<p><img src="Default_generated_mesh_problem_highlighted.png" alt="Default generated mesh problem highlighted"></p>
-<p>The problem has been highlighted, which is the mismatch between the vertices after mesh refinement.</p>
-<p>The official tutorial document is as follows,<br><a href="https://www.dealii.org/current/doxygen/deal.II/step_2.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/step_2.html</a></p>
-
+            <p>
+              2019.09.21 Step-2 StudyThe step-2 is mainly talking about the degree of freedom (Dof) of a FEM problem.
+First, let’s generate the default mesh, where 
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/21/Deal.ii-step-2/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2009,21 +1862,19 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+            <p>
+              Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/20/hello-world/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -2164,12 +2015,20 @@
       
         
           
-            <p>I will record some useful links which inspired or are inspiring me.<br>I thank every author for his or her valuable information!</p>
-<p>Deal.ii tutorials and other useful techniques:<br>Author: Qi xinbo<br><a href="http://qixinbo.info/" target="_blank" rel="noopener">http://qixinbo.info/</a></p>
-<p>Hexo personal website detailed tutorials:<br>Author: Wei Yang<br><a href="https://godweiyang.com" target="_blank" rel="noopener">https://godweiyang.com</a></p>
-<p>Many adviceds for begining programmers:<br>Author: 水寒<br><a href="https://dp2px.com" target="_blank" rel="noopener">https://dp2px.com</a></p>
-
+            <p>
+              I will record some useful links which inspired or are inspiring me.I thank every author for his or her valuable information!
+Deal.ii tutorials and oth
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/09/20/Useful-links/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
