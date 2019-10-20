@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Brian&#39;s blog">
 <meta property="og:description" content="I have a Thinkpad T480 and use Ubuntu 18.04. Recently, I occassionally encounter black screen problem when I tried to wake the computer up from suspend. The error log is: pci_pm_suspend(): hcd_pci_sus">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-20T20:42:11.690Z">
+<meta property="og:updated_time" content="2019-10-20T22:03:09.643Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solution of Ubuntu suspend errors">
 <meta name="twitter:description" content="I have a Thinkpad T480 and use Ubuntu 18.04. Recently, I occassionally encounter black screen problem when I tried to wake the computer up from suspend. The error log is: pci_pm_suspend(): hcd_pci_sus">
@@ -405,7 +405,7 @@
                 
               
 
-              <time title="Created: 2019-10-20 15:37:08 / Modified: 16:42:11" itemprop="dateCreated datePublished" datetime="2019-10-20T15:37:08-04:00">2019-10-20</time>
+              <time title="Created: 2019-10-20 15:37:08 / Modified: 18:03:09" itemprop="dateCreated datePublished" datetime="2019-10-20T15:37:08-04:00">2019-10-20</time>
             
 
             
@@ -454,6 +454,13 @@
 <p>I only modified a little bit. I only want to modify the corresponding information not to change the whole file named wakeup. The following is my modified script:</p>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#!/bin/sh</span></span><br><span class="line"><span class="section"># </span></span><br><span class="line"><span class="section"># This script should prevent the following suspend errors</span></span><br><span class="line"><span class="section">#  which freezes the Dell Inspiron laptop. </span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># Put it in /usr/lib/systemd/system-sleep/xhci.sh</span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section"># The PCI 00:14.0 device is the usb xhci controller.</span></span><br><span class="line"><span class="section">#</span></span><br><span class="line"><span class="section">#    kernel: [67445.560610] pci_pm_suspend(): hcd_pci_suspend+0x0/0x30 returns -16</span></span><br><span class="line"><span class="section">#    kernel: [67445.560619] dpm_run_callback(): pci_pm_suspend+0x0/0x150 returns -16</span></span><br><span class="line"><span class="section">#    kernel: [67445.560624] PM: Device 0000:00:14.0 failed to suspend async: error -16</span></span><br><span class="line"><span class="section">#    kernel: [67445.886961] PM: Some devices failed to suspend, or early wake event detected</span></span><br><span class="line"></span><br><span class="line">if [ "$&#123;1&#125;" == "pre" ]; then</span><br><span class="line">  # Do the thing you want before suspend here, e.g.:</span><br><span class="line">  echo "Disable broken xhci module before suspending at $(date)..." &gt; /tmp/systemd<span class="emphasis">_suspend_</span>test</span><br><span class="line">  grep XHC.*enable /proc/acpi/wakeup &amp;&amp; sed '/XHC/ s/enabled/disabled/' /proc/acpi/wakeup</span><br><span class="line"><span class="section">#  grep XHC.*enable /proc/acpi/wakeup &amp;&amp; echo XHC &gt; /proc/acpi/wakeup</span></span><br><span class="line">elif [ "$&#123;1&#125;" == "post" ]; then</span><br><span class="line">  # Do the thing you want after resume here, e.g.:</span><br><span class="line">  echo "Enable broken xhci module at wakeup from $(date)" &gt;&gt; /tmp/systemd<span class="emphasis">_suspend_</span>test</span><br><span class="line">  grep XHC.*disable /proc/acpi/wakeup &amp;&amp; sed '/XHC/ s/disabled/enabled/' /proc/acpi/wakeup</span><br><span class="line"><span class="section">#  grep XHC.*disable /proc/acpi/wakeup &amp;&amp; echo XHC &gt; /proc/acpi/wakeup</span></span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
 
+<p>When I run it by</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./xhci.sh</span><br></pre></td></tr></table></figure>
+
+<p>it reported error</p>
+<p>./xhci.sh: 15: [: unexpected operator<br>./xhci.sh: 19: [: unexpected operator</p>
+<p>However, when I change #!/bin/sh to #!/bin/bash, it is OK.</p>
+<p>However, both cases, the /proc/acpi/wakeup file is not modified properly. I have no idea about the solution yet.</p>
 
       
     </div>
