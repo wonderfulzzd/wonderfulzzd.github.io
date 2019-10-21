@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Brian&#39;s blog">
 <meta property="og:description" content="CellId Class (providing global cell index)A class to represent a unique ID for a cell in a Triangulation. It is returned by cell-&amp;gt;id() if cell is a cell iterator. In other words, CellId provides th">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-21T11:59:59.509Z">
+<meta property="og:updated_time" content="2019-10-21T12:02:38.241Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deal.ii-TopOpt">
 <meta name="twitter:description" content="CellId Class (providing global cell index)A class to represent a unique ID for a cell in a Triangulation. It is returned by cell-&amp;gt;id() if cell is a cell iterator. In other words, CellId provides th">
@@ -422,7 +422,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-21 07:59:59" itemprop="dateModified" datetime="2019-10-21T07:59:59-04:00">2019-10-21</time>
+                <time title="Modified: 2019-10-21 08:02:38" itemprop="dateModified" datetime="2019-10-21T08:02:38-04:00">2019-10-21</time>
               
             
           </span>
@@ -491,7 +491,11 @@
 <h2 id="Iterators-on-mesh-like-containers"><a href="#Iterators-on-mesh-like-containers" class="headerlink" title="Iterators on mesh-like containers"></a>Iterators on mesh-like containers</h2><p><a href="https://www.dealii.org/current/doxygen/deal.II/group__Iterators.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/group__Iterators.html</a></p>
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">typename Trianguation&lt;dim&gt;::active<span class="emphasis">_cell_</span>iterator ti  = tria.begin_active();</span><br><span class="line">typename DoFHandler&lt;dim&gt;::active<span class="emphasis">_cell_</span>iterator   di1 = dof1.begin_active();</span><br><span class="line">typename DoFHandler&lt;dim&gt;::active<span class="emphasis">_cell_</span>iterator   di2 = dof2.begin_active();</span><br><span class="line">...</span><br><span class="line">while (ti != tria.end())</span><br><span class="line">&#123;</span><br><span class="line">  // do something</span><br><span class="line">  ++ti;</span><br><span class="line">  ++di1;</span><br><span class="line">  ++di2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>But the method provided there for accessing multiple DoFHandlers is very time-consuming.<br>How can I accelerate the process of accessing the distributed vector x (pesudo density in topology optimization).<br>I need to solve this!</p>
+<p>But the method provided there for accessing multiple DoFHandlers is very time-consuming.<br>How can I accelerate the process of accessing the distributed vector x (pesudo density in topology optimization).</p>
+<p>I found the following synatx is very time-consuming.<br>I don’t know why. I need to figure it out.</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opt-&gt;x(local<span class="emphasis">_dof_</span>indices<span class="emphasis">_dg_</span>int);</span><br></pre></td></tr></table></figure>
+
+<p>I need to solve this!</p>
 <h2 id="Problems-to-be-solved"><a href="#Problems-to-be-solved" class="headerlink" title="Problems to be solved"></a>Problems to be solved</h2><ol>
 <li>How are the classes destructed in deal.II and my own codes?</li>
 <li>How do macros exactly work in c++? namespace, using namespace…</li>
