@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Brian&#39;s blog">
 <meta property="og:description" content="CellId Class (providing global cell index)A class to represent a unique ID for a cell in a Triangulation. It is returned by cell-&amp;gt;id() if cell is a cell iterator. In other words, CellId provides th">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-21T12:02:38.241Z">
+<meta property="og:updated_time" content="2019-10-21T15:14:00.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Deal.ii-TopOpt">
 <meta name="twitter:description" content="CellId Class (providing global cell index)A class to represent a unique ID for a cell in a Triangulation. It is returned by cell-&amp;gt;id() if cell is a cell iterator. In other words, CellId provides th">
@@ -422,7 +422,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-10-21 08:02:38" itemprop="dateModified" datetime="2019-10-21T08:02:38-04:00">2019-10-21</time>
+                <time title="Modified: 2019-10-21 11:14:00" itemprop="dateModified" datetime="2019-10-21T11:14:00-04:00">2019-10-21</time>
               
             
           </span>
@@ -496,6 +496,38 @@
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opt-&gt;x(local<span class="emphasis">_dof_</span>indices<span class="emphasis">_dg_</span>int);</span><br></pre></td></tr></table></figure>
 
 <p>I need to solve this!</p>
+<p>I have figured the solution out. I also posted it in the deal.II google group:<br><a href="https://groups.google.com/forum/#!topic/dealii/6ldNo1Vkrbg" target="_blank" rel="noopener">https://groups.google.com/forum/#!topic/dealii/6ldNo1Vkrbg</a><br>I summarize it as follows in case that it can help some one else as well.</p>
+<p>Problem summary: In topology optimization, each cell has a scalar variable (pesudo density). So the density will form a vector, but the vector dimensions are different from those of the vector, say LA::MPI::Vector locally_relevant_solution (refer to Step-40). Because it only has one related value per cell. How to build up such “cell-based” vector?</p>
+<p>Solution steps: (inspired by the suggestion from Dr. W. Bangerth)</p>
+<ol>
+<li>Build two fem field objects.</li>
+</ol>
+<p>FESystem<dim> fe;   // for describing the vector-valued field (eg. displacement)<br>FE_DGQ<dim> fe_dg; // for describing the cell field (eg. pesudo density in topology optimization)</dim></dim></p>
+<p>And initialize them in the initialization list of the class,</p>
+<p>fe(FE_Q<dim>(1), dim),<br>fe_dg(0),</dim></p>
+<p>And initialize the cell-based vector (the pesudo density in topology optimization) as follows,</p>
+<p>opt-&gt;locally_owned_cells= opt-&gt;dof_handler_dg.locally_owned_dofs();<br>// it is named with “cells” because I want to distinguish it from “opt-&gt;locally_owned_dofs” which is for the first FE field (fe(FE_Q<dim>(1), dim)).</dim></p>
+<p>DoFTools::extract_locally_relevant_dofs(opt-&gt;dof_handler_dg,<br>                                            opt-&gt;locally_relevant_cells);<br>opt-&gt;x.reinit(opt-&gt;locally_owned_cells,<br>                  opt-&gt;locally_relevant_cells,<br>                  opt-&gt;mpi_communicator);</p>
+<ol start="2">
+<li>I need to access both FE fields at the same time.</li>
+</ol>
+<p>DoFHandler<dim> dof_handler;<br>DoFHandler<dim> dof_handler_dg;</dim></dim></p>
+<p>If I use the default loop,</p>
+<p>for (const auto &amp;cell : opt-&gt;dof_handler.active_cell_iterators())<br>{<br>   …<br>}</p>
+<p>how can I access to the second FE field, which is dof_handler_dg?</p>
+<p>My attempting solution is to set up multiple iterators, just as in the tutorial:<br><a href="https://www.dealii.org/current/doxygen/deal.II/group__Iterators.html" target="_blank" rel="noopener">https://www.dealii.org/current/doxygen/deal.II/group__Iterators.html</a>,</p>
+<p>typename Triangulation<dim>::active_cell_iterator ti =<br>                    opt-&gt;triangulation.begin_active();<br>typename DoFHandler<dim>::active_cell_iterator di1 =<br>                    opt-&gt;dof_handler.begin_active();<br>typename DoFHandler<dim>::active_cell_iterator di2 =<br>                    opt-&gt;dof_handler_dg.begin_active();</dim></dim></dim></p>
+<p>Therefore, I set up the loop as follows,</p>
+<p>while (cell != opt-&gt;triangulation.end())<br>{<br>    // do someting</p>
+<pre><code>++ti;
+++di1;
+++di2;</code></pre><p>}</p>
+<ol start="3">
+<li>Now I can access to the cell-based vector x successfully as follows,</li>
+</ol>
+<p>di2-&gt;get_dof_indices(local_dof_indices_dg);<br>unsigned int local_dof_indices_dg_int = local_dof_indices_dg.at(0);<br>opt-&gt;x(local_dof_indices_dg_int);</p>
+<p>It was very time-consuming to execute because I put the vector access, say opt-&gt;x(local_dof_indices_dg_int), in the most inner loop. I don’t need to access it for each quadrature point nor each degree of freedom. Because for each cell, the opt-&gt;x is fixed. So I put opt-&gt;x in the outside of those loops, and the computing time is normal now.</p>
+<p>In sum, the parallel distributed density vector has been set up.</p>
 <h2 id="Problems-to-be-solved"><a href="#Problems-to-be-solved" class="headerlink" title="Problems to be solved"></a>Problems to be solved</h2><ol>
 <li>How are the classes destructed in deal.II and my own codes?</li>
 <li>How do macros exactly work in c++? namespace, using namespace…</li>
