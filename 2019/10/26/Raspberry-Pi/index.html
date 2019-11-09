@@ -108,7 +108,7 @@
 <meta property="og:image" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/Generic_cluster_layout.png">
 <meta property="og:image" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/Another_Raspberry_Pi_cluster_configuration.png">
 <meta property="og:image" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/Raspberry_Pi_cluster_lego.jpg">
-<meta property="og:updated_time" content="2019-11-09T22:57:14.285Z">
+<meta property="og:updated_time" content="2019-11-09T23:19:39.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Raspberry Pi">
 <meta name="twitter:description" content="Raspberry PiVery interesting Raspberry Pi applicationshttps://www.youtube.com/watch?v=IbKY-n71XCE Raspberry Pi is a very small computer.https://en.wikipedia.org/wiki/Raspberry_Pi I will try to use it">
@@ -427,7 +427,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-11-09 17:57:14" itemprop="dateModified" datetime="2019-11-09T17:57:14-05:00">2019-11-09</time>
+                <time title="Modified: 2019-11-09 18:19:39" itemprop="dateModified" datetime="2019-11-09T18:19:39-05:00">2019-11-09</time>
               
             
           </span>
@@ -504,6 +504,9 @@
 <h2 id="Install-Raspbian"><a href="#Install-Raspbian" class="headerlink" title="Install Raspbian"></a>Install Raspbian</h2><p><a href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md" target="_blank" rel="noopener">https://www.raspberrypi.org/documentation/installation/installing-images/linux.md</a></p>
 <h2 id="Setup-VNC"><a href="#Setup-VNC" class="headerlink" title="Setup VNC"></a>Setup VNC</h2><p><a href="http://www.carobot.cc/how-to/raspberrypi-tutorials/headless-raspberry-pi-using-ssh-and-vnc/" target="_blank" rel="noopener">www.carobot.cc/how-to/raspberrypi-tutorials/headless-raspberry-pi-using-ssh-and-vnc/</a></p>
 <h2 id="Using-vncviewer"><a href="#Using-vncviewer" class="headerlink" title="Using vncviewer"></a>Using vncviewer</h2><p>for example:<br>vncviewer -FullScreen 192.168.0.23:1</p>
+<p>“No matching security types”<br>You can use following steps:<br>Step 1: If you have VNCServer already running just kill it. Use “vncserver -kill :windowNumber”. You can find your window number in the raspberry pi terminal. Generally, you can use 1.</p>
+<p>Step 2: Now you should start your VNCServer by the following command “vncserver -Encryption PreferOff -Authentication VncAuth”. Hit Enter.</p>
+<p>Step 3: This would also prompt you to provide the password just enter a simple one like “raspberry”.</p>
 <h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p><a href="https://www.raspberrypi.org/documentation/remote-access/ssh/" target="_blank" rel="noopener">https://www.raspberrypi.org/documentation/remote-access/ssh/</a></p>
 
       
