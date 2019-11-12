@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="Brian&#39;s blog">
 <meta property="og:description" content="Preprocessor directivePreprocessor directives are lines included in the code of programs preceded by a hash sign (#). These lines are not program statements but directives for the preprocessor. The pr">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-08T23:09:21.289Z">
+<meta property="og:updated_time" content="2019-11-10T02:13:12.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++ info.">
 <meta name="twitter:description" content="Preprocessor directivePreprocessor directives are lines included in the code of programs preceded by a hash sign (#). These lines are not program statements but directives for the preprocessor. The pr">
@@ -405,12 +405,24 @@
                 
               
 
-              <time title="Created: 2019-11-08 17:26:22 / Modified: 18:09:21" itemprop="dateCreated datePublished" datetime="2019-11-08T17:26:22-05:00">2019-11-08</time>
+              <time title="Created: 2019-11-08 17:26:22" itemprop="dateCreated datePublished" datetime="2019-11-08T17:26:22-05:00">2019-11-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-09 21:13:12" itemprop="dateModified" datetime="2019-11-09T21:13:12-05:00">2019-11-09</time>
               
             
           </span>
@@ -485,6 +497,14 @@
 <h2 id="Protected-vs-private"><a href="#Protected-vs-private" class="headerlink" title="Protected vs. private"></a>Protected vs. private</h2><p>private - only available to be accessed within the class that defines them.</p>
 <p>protected - accessible in the class that defines them and in other classes which inherit from that class.</p>
 <p>From: <a href="https://stackoverflow.com/questions/12784083/what-is-the-difference-between-protected-and-private" target="_blank" rel="noopener">https://stackoverflow.com/questions/12784083/what-is-the-difference-between-protected-and-private</a></p>
+<h2 id="g-c-hello-world-cc-o-hello-world-vs-g-hello-world-cc-o-hello-world"><a href="#g-c-hello-world-cc-o-hello-world-vs-g-hello-world-cc-o-hello-world" class="headerlink" title="g++ -c hello_world.cc -o hello_world  vs.  g++ hello_world.cc -o hello_world"></a>g++ -c hello_world.cc -o hello_world  vs.  g++ hello_world.cc -o hello_world</h2><p>The -c flag tells g++ to compile your source code to object code, but stop short of linking it with the necessary libraries to create a standalone executable binary. From man gcc:</p>
+<p>   -c  Compile or assemble the source files, but do not link.  The linking<br>       stage simply is not done.  The ultimate output is in the form of an<br>       object file for each source file.</p>
+<p>To create an executable program, simple run your command again without the -c flag:</p>
+<p>g++ test.cc -o out</p>
+<p>followed by</p>
+<p>./out</p>
+<p>(the executable flag will be set by default - an explicit chmod should not be required).</p>
+<p>From <a href="https://askubuntu.com/questions/696764/exec-format-error-of-gcc-compiled-hello-world-c" target="_blank" rel="noopener">https://askubuntu.com/questions/696764/exec-format-error-of-gcc-compiled-hello-world-c</a></p>
 
       
     </div>
@@ -717,7 +737,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preprocessor-directive"><span class="nav-number">1.</span> <span class="nav-text">Preprocessor directive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explicit-specifier"><span class="nav-number">2.</span> <span class="nav-text">Explicit specifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-attribute-deprecated"><span class="nav-number">3.</span> <span class="nav-text">C++ attribute: deprecated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Friend-functions"><span class="nav-number">4.</span> <span class="nav-text">Friend functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protected-vs-private"><span class="nav-number">5.</span> <span class="nav-text">Protected vs. private</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preprocessor-directive"><span class="nav-number">1.</span> <span class="nav-text">Preprocessor directive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explicit-specifier"><span class="nav-number">2.</span> <span class="nav-text">Explicit specifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-attribute-deprecated"><span class="nav-number">3.</span> <span class="nav-text">C++ attribute: deprecated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Friend-functions"><span class="nav-number">4.</span> <span class="nav-text">Friend functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protected-vs-private"><span class="nav-number">5.</span> <span class="nav-text">Protected vs. private</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g-c-hello-world-cc-o-hello-world-vs-g-hello-world-cc-o-hello-world"><span class="nav-number">6.</span> <span class="nav-text">g++ -c hello_world.cc -o hello_world  vs.  g++ hello_world.cc -o hello_world</span></a></li></ol></div>
             
 
           </div>
