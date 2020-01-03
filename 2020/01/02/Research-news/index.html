@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Preprocessor directivePreprocessor directives are lines included in the code of programs preceded by a hash sign (#). These lines are not program statements but directives for the preprocessor. The pr">
-<meta name="keywords" content="C++">
+  <meta name="description" content="2020-01-02 ThursdaySiemens acquires Atlas 3D to expand additive manufacturing portfoliohttps://www.ciol.com/siemens-acquires-atlas-3d-expand-additive-manufacturing-portfolio/">
+<meta name="keywords" content="Research">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++ info.">
-<meta property="og:url" content="http://wonderfulzzd.github.io/2019/11/08/C-info/index.html">
+<meta property="og:title" content="Research news">
+<meta property="og:url" content="http://wonderfulzzd.github.io/2020/01/02/Research-news/index.html">
 <meta property="og:site_name" content="Brian&#39;s blog">
-<meta property="og:description" content="Preprocessor directivePreprocessor directives are lines included in the code of programs preceded by a hash sign (#). These lines are not program statements but directives for the preprocessor. The pr">
+<meta property="og:description" content="2020-01-02 ThursdaySiemens acquires Atlas 3D to expand additive manufacturing portfoliohttps://www.ciol.com/siemens-acquires-atlas-3d-expand-additive-manufacturing-portfolio/">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-10T02:13:12.970Z">
+<meta property="og:updated_time" content="2020-01-03T04:38:43.536Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C++ info.">
-<meta name="twitter:description" content="Preprocessor directivePreprocessor directives are lines included in the code of programs preceded by a hash sign (#). These lines are not program statements but directives for the preprocessor. The pr">
+<meta name="twitter:title" content="Research news">
+<meta name="twitter:description" content="2020-01-02 ThursdaySiemens acquires Atlas 3D to expand additive manufacturing portfoliohttps://www.ciol.com/siemens-acquires-atlas-3d-expand-additive-manufacturing-portfolio/">
 
 
 
@@ -115,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://wonderfulzzd.github.io/2019/11/08/C-info/">
+  <link rel="canonical" href="http://wonderfulzzd.github.io/2020/01/02/Research-news/">
 
 
 
@@ -125,7 +125,7 @@
   };
 </script>
 
-  <title>C++ info. | Brian's blog</title>
+  <title>Research news | Brian's blog</title>
   
 
 
@@ -362,7 +362,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://wonderfulzzd.github.io/2019/11/08/C-info/">
+    <link itemprop="mainEntityOfPage" href="http://wonderfulzzd.github.io/2020/01/02/Research-news/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Zhidong Brian Zhang">
@@ -379,7 +379,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">C++ info.
+          <h1 class="post-title" itemprop="name headline">Research news
 
               
             
@@ -405,24 +405,12 @@
                 
               
 
-              <time title="Created: 2019-11-08 17:26:22" itemprop="dateCreated datePublished" datetime="2019-11-08T17:26:22-05:00">2019-11-08</time>
+              <time title="Created: 2020-01-02 23:37:13 / Modified: 23:38:43" itemprop="dateCreated datePublished" datetime="2020-01-02T23:37:13-05:00">2020-01-02</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-11-09 21:13:12" itemprop="dateModified" datetime="2019-11-09T21:13:12-05:00">2019-11-09</time>
               
             
           </span>
@@ -439,7 +427,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Research/" itemprop="url" rel="index"><span itemprop="name">Research</span></a></span>
 
                 
                 
@@ -481,30 +469,7 @@
       
 
       
-        <h2 id="Preprocessor-directive"><a href="#Preprocessor-directive" class="headerlink" title="Preprocessor directive"></a>Preprocessor directive</h2><p>Preprocessor directives are lines included in the code of programs preceded by a hash sign (#). These lines are not program statements but directives for the preprocessor. The preprocessor examines the code before actual compilation of code begins and resolves all these directives before any code is actually generated by regular statements.</p>
-<p>macro definitions (#define, #undef)<br>Conditional inclusions (#ifdef, #ifndef, #if, #endif, #else and #elif)<br>Line control (#line)<br>Error directive (#error)<br>Source file inclusion (#include)<br>From: <a href="http://www.cplusplus.com/doc/tutorial/preprocessor/" target="_blank" rel="noopener">http://www.cplusplus.com/doc/tutorial/preprocessor/</a></p>
-<h2 id="Explicit-specifier"><a href="#Explicit-specifier" class="headerlink" title="Explicit specifier"></a>Explicit specifier</h2><p>Suppose, you have a class String:</p>
-<p>class String {<br>public:<br>    String(int n); // allocate n bytes to the String object<br>    String(const char *p); // initializes object with char *p<br>};</p>
-<p>Now, if you try:</p>
-<p>String mystring = ‘x’;</p>
-<p>The character ‘x’ will be implicitly converted to int and then the String(int) constructor will be called. But, this is not what the user might have intended. So, to prevent such conditions, we shall define the constructor as explicit:</p>
-<p>class String {<br>public:<br>    explicit String (int n); //allocate n bytes<br>    String(const char *p); // initialize sobject with string p<br>};</p>
-<p>From: <a href="https://stackoverflow.com/questions/121162/what-does-the-explicit-keyword-mean" target="_blank" rel="noopener">https://stackoverflow.com/questions/121162/what-does-the-explicit-keyword-mean</a></p>
-<h2 id="C-attribute-deprecated"><a href="#C-attribute-deprecated" class="headerlink" title="C++ attribute: deprecated"></a>C++ attribute: deprecated</h2><p>Indicates that the name or entity declared with this attribute is deprecated, that is, the use is allowed, but discouraged for some reason.<br>Syntax<br>[[deprecated]]     (1)<br>[[deprecated( string-literal )]]     (2)     </p>
-<p>From: <a href="https://en.cppreference.com/w/cpp/language/attributes/deprecated" target="_blank" rel="noopener">https://en.cppreference.com/w/cpp/language/attributes/deprecated</a></p>
-<h2 id="Friend-functions"><a href="#Friend-functions" class="headerlink" title="Friend functions"></a>Friend functions</h2><p>A friend function of a class is defined outside that class’ scope but it has the right to access all private and protected members of the class. Even though the prototypes for friend functions appear in the class definition, friends are not member functions.</p>
-<p>From: <a href="https://www.tutorialspoint.com/cplusplus/cpp_friend_functions.htm" target="_blank" rel="noopener">https://www.tutorialspoint.com/cplusplus/cpp_friend_functions.htm</a></p>
-<h2 id="Protected-vs-private"><a href="#Protected-vs-private" class="headerlink" title="Protected vs. private"></a>Protected vs. private</h2><p>private - only available to be accessed within the class that defines them.</p>
-<p>protected - accessible in the class that defines them and in other classes which inherit from that class.</p>
-<p>From: <a href="https://stackoverflow.com/questions/12784083/what-is-the-difference-between-protected-and-private" target="_blank" rel="noopener">https://stackoverflow.com/questions/12784083/what-is-the-difference-between-protected-and-private</a></p>
-<h2 id="g-c-hello-world-cc-o-hello-world-vs-g-hello-world-cc-o-hello-world"><a href="#g-c-hello-world-cc-o-hello-world-vs-g-hello-world-cc-o-hello-world" class="headerlink" title="g++ -c hello_world.cc -o hello_world  vs.  g++ hello_world.cc -o hello_world"></a>g++ -c hello_world.cc -o hello_world  vs.  g++ hello_world.cc -o hello_world</h2><p>The -c flag tells g++ to compile your source code to object code, but stop short of linking it with the necessary libraries to create a standalone executable binary. From man gcc:</p>
-<p>   -c  Compile or assemble the source files, but do not link.  The linking<br>       stage simply is not done.  The ultimate output is in the form of an<br>       object file for each source file.</p>
-<p>To create an executable program, simple run your command again without the -c flag:</p>
-<p>g++ test.cc -o out</p>
-<p>followed by</p>
-<p>./out</p>
-<p>(the executable flag will be set by default - an explicit chmod should not be required).</p>
-<p>From <a href="https://askubuntu.com/questions/696764/exec-format-error-of-gcc-compiled-hello-world-c" target="_blank" rel="noopener">https://askubuntu.com/questions/696764/exec-format-error-of-gcc-compiled-hello-world-c</a></p>
+        <h2 id="2020-01-02-Thursday"><a href="#2020-01-02-Thursday" class="headerlink" title="2020-01-02 Thursday"></a>2020-01-02 Thursday</h2><p>Siemens acquires Atlas 3D to expand additive manufacturing portfolio<br><a href="https://www.ciol.com/siemens-acquires-atlas-3d-expand-additive-manufacturing-portfolio/" target="_blank" rel="noopener">https://www.ciol.com/siemens-acquires-atlas-3d-expand-additive-manufacturing-portfolio/</a></p>
 
       
     </div>
@@ -528,7 +493,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/C/" rel="tag"># C++</a>
+            <a href="/tags/Research/" rel="tag"># Research</a>
           
         </div>
       
@@ -541,8 +506,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/08/FEM-info/" rel="next" title="FEM info.">
-                <i class="fa fa-chevron-left"></i> FEM info.
+              <a href="/2019/11/08/C-info/" rel="next" title="C++ info.">
+                <i class="fa fa-chevron-left"></i> C++ info.
               </a>
             
           </div>
@@ -550,10 +515,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/01/02/Research-news/" rel="prev" title="Research news">
-                Research news <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -743,7 +704,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Preprocessor-directive"><span class="nav-number">1.</span> <span class="nav-text">Preprocessor directive</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Explicit-specifier"><span class="nav-number">2.</span> <span class="nav-text">Explicit specifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-attribute-deprecated"><span class="nav-number">3.</span> <span class="nav-text">C++ attribute: deprecated</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Friend-functions"><span class="nav-number">4.</span> <span class="nav-text">Friend functions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Protected-vs-private"><span class="nav-number">5.</span> <span class="nav-text">Protected vs. private</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#g-c-hello-world-cc-o-hello-world-vs-g-hello-world-cc-o-hello-world"><span class="nav-number">6.</span> <span class="nav-text">g++ -c hello_world.cc -o hello_world  vs.  g++ hello_world.cc -o hello_world</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2020-01-02-Thursday"><span class="nav-number">1.</span> <span class="nav-text">2020-01-02 Thursday</span></a></li></ol></div>
             
 
           </div>
