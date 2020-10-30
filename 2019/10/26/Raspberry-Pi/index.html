@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Raspberry PiVery interesting Raspberry Pi applicationshttps://www.youtube.com/watch?v=IbKY-n71XCE Raspberry Pi is a very small computer.https://en.wikipedia.org/wiki/Raspberry_Pi I will try to use it">
+<meta name="keywords" content="Raspberry_pi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raspberry Pi">
+<meta property="og:url" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/index.html">
+<meta property="og:site_name" content="Brian&#39;s blog">
+<meta property="og:description" content="Raspberry PiVery interesting Raspberry Pi applicationshttps://www.youtube.com/watch?v=IbKY-n71XCE Raspberry Pi is a very small computer.https://en.wikipedia.org/wiki/Raspberry_Pi I will try to use it">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/Another_Raspberry_Pi_cluster_configuration.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/Generic_cluster_layout.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/Another_Raspberry_Pi_cluster_configuration.png">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/Raspberry_Pi_cluster_lego.jpg">
+<meta property="og:updated_time" content="2019-11-12T05:59:35.888Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Raspberry Pi">
+<meta name="twitter:description" content="Raspberry PiVery interesting Raspberry Pi applicationshttps://www.youtube.com/watch?v=IbKY-n71XCE Raspberry Pi is a very small computer.https://en.wikipedia.org/wiki/Raspberry_Pi I will try to use it">
+<meta name="twitter:image" content="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/Another_Raspberry_Pi_cluster_configuration.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Raspberry Pi | Brian's blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Brian's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">One word, one world</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-commonweal">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/404/" rel="section"><i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br>Commonweal 404</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://wonderfulzzd.github.io/2019/10/26/Raspberry-Pi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Zhidong Brian Zhang">
+      <meta itemprop="description" content="Learning is not learning.">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Brian's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Raspberry Pi
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-10-26 22:10:46" itemprop="dateCreated datePublished" datetime="2019-10-26T22:10:46-04:00">2019-10-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-12 00:59:35" itemprop="dateModified" datetime="2019-11-12T00:59:35-05:00">2019-11-12</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Raspberry-Pi"><a href="#Raspberry-Pi" class="headerlink" title="Raspberry Pi"></a>Raspberry Pi</h2><h2 id="Very-interesting-Raspberry-Pi-applications"><a href="#Very-interesting-Raspberry-Pi-applications" class="headerlink" title="Very interesting Raspberry Pi applications"></a>Very interesting Raspberry Pi applications</h2><p><a href="https://www.youtube.com/watch?v=IbKY-n71XCE" target="_blank" rel="noopener">https://www.youtube.com/watch?v=IbKY-n71XCE</a></p>
+<p>Raspberry Pi is a very small computer.<br><a href="https://en.wikipedia.org/wiki/Raspberry_Pi" target="_blank" rel="noopener">https://en.wikipedia.org/wiki/Raspberry_Pi</a></p>
+<p>I will try to use it to set up a cluster to study cluster operations.</p>
+<h2 id="Using-Raspberry-Pi-to-build-a-cluster"><a href="#Using-Raspberry-Pi-to-build-a-cluster" class="headerlink" title="Using Raspberry Pi to build a cluster:"></a>Using Raspberry Pi to build a cluster:</h2><p>Paper:<br>citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.431.1284&amp;rep=rep1&amp;type=pdf<br>The news about the above work:<br><a href="https://www.tomshardware.com/news/Raspberry-Pi-Supercomputer-Legos-Linux,17596.html" target="_blank" rel="noopener">https://www.tomshardware.com/news/Raspberry-Pi-Supercomputer-Legos-Linux,17596.html</a></p>
+<h2 id="Other-application-insprison-from-Zhihu"><a href="#Other-application-insprison-from-Zhihu" class="headerlink" title="Other application insprison from Zhihu:"></a>Other application insprison from Zhihu:</h2><p>有哪些对树莓派的有趣改造和扩展应用？ - Jason Qu的回答 - 知乎<br><a href="https://www.zhihu.com/question/20697024/answer/15888489" target="_blank" rel="noopener">https://www.zhihu.com/question/20697024/answer/15888489</a></p>
+<h2 id="Raspberry-Pi-Cluster-32-nodes"><a href="#Raspberry-Pi-Cluster-32-nodes" class="headerlink" title="Raspberry Pi Cluster (32 nodes)"></a>Raspberry Pi Cluster (32 nodes)</h2><p>coen.boisestate.edu/ece/files/2013/05/Creating.a.Raspberry.Pi-Based.Beowulf.Cluster_v2.pdf</p>
+<h2 id="The-author’s-PhD-thesis-using-the-cluster-to-fulfill-the-his-PhD-work"><a href="#The-author’s-PhD-thesis-using-the-cluster-to-fulfill-the-his-PhD-work" class="headerlink" title="The author’s PhD thesis (using the cluster to fulfill the his PhD work):"></a>The author’s PhD thesis (using the cluster to fulfill the his PhD work):</h2><p><a href="https://scholarworks.boisestate.edu/cgi/viewcontent.cgi?article=1855&amp;context=td" target="_blank" rel="noopener">https://scholarworks.boisestate.edu/cgi/viewcontent.cgi?article=1855&amp;context=td</a><br><img src="Another_Raspberry_Pi_cluster_configuration.png" alt="Another Raspberry Pi cluster configuration"></p>
+<h2 id="Another-Raspberry-Pi-Cluster"><a href="#Another-Raspberry-Pi-Cluster" class="headerlink" title="Another Raspberry Pi Cluster"></a>Another Raspberry Pi Cluster</h2><p><a href="https://ieeexplore.ieee.org/abstract/document/6871791/authors#authors" target="_blank" rel="noopener">https://ieeexplore.ieee.org/abstract/document/6871791/authors#authors</a></p>
+<h2 id="Very-good-article-about-how-to-build-an-HPC-cluster"><a href="#Very-good-article-about-how-to-build-an-HPC-cluster" class="headerlink" title="Very good article about how to build an HPC cluster"></a>Very good article about how to build an HPC cluster</h2><p><a href="http://www.admin-magazine.com/HPC/Articles/Building-an-HPC-Cluster" target="_blank" rel="noopener">www.admin-magazine.com/HPC/Articles/Building-an-HPC-Cluster</a><br><img src="Generic_cluster_layout.png" alt="Generic cluster layout"></p>
+<h2 id="Building-a-Raspberry-PI-Cluster-should-be-very-very-useful"><a href="#Building-a-Raspberry-PI-Cluster-should-be-very-very-useful" class="headerlink" title="Building a Raspberry PI Cluster (should be very very useful)"></a>Building a Raspberry PI Cluster (should be very very useful)</h2><p>Part I: Hardware Acquisition and Assembly<br><a href="https://linuxconfig.org/building-a-raspberry-pi-cluster-part-i-hardware-acquisition-and-assembly" target="_blank" rel="noopener">https://linuxconfig.org/building-a-raspberry-pi-cluster-part-i-hardware-acquisition-and-assembly</a><br>Part II: Operating system installation<br><a href="https://linuxconfig.org/building-a-raspberry-pi-cluster-part-ii-operating-system-installation" target="_blank" rel="noopener">https://linuxconfig.org/building-a-raspberry-pi-cluster-part-ii-operating-system-installation</a><br>Part III: Simultaneous Node Management<br><a href="https://linuxconfig.org/building-a-raspberry-pi-cluster-part-iii-simultaneous-node-management" target="_blank" rel="noopener">https://linuxconfig.org/building-a-raspberry-pi-cluster-part-iii-simultaneous-node-management</a><br>Part IV: Monitoring<br><a href="https://linuxconfig.org/building-a-raspberry-pi-cluster-part-iv-monitoring" target="_blank" rel="noopener">https://linuxconfig.org/building-a-raspberry-pi-cluster-part-iv-monitoring</a></p>
+<h2 id="Another-Raspberry-Pi-cluster-configuration"><a href="#Another-Raspberry-Pi-cluster-configuration" class="headerlink" title="Another Raspberry Pi cluster configuration"></a>Another Raspberry Pi cluster configuration</h2><p><img src="Another_Raspberry_Pi_cluster_configuration.png" alt="Another Raspberry Pi cluster configuration"></p>
+<h2 id="Very-detailed-information-about-SSH-Setup-but-no-NFS-Network-File-System"><a href="#Very-detailed-information-about-SSH-Setup-but-no-NFS-Network-File-System" class="headerlink" title="Very detailed information about SSH Setup but no NFS(Network File System)"></a>Very detailed information about SSH Setup but no NFS(Network File System)</h2><p>Still very very useful<br><a href="https://www.instructables.com/id/How-to-Make-a-Raspberry-Pi-SuperComputer/" target="_blank" rel="noopener">https://www.instructables.com/id/How-to-Make-a-Raspberry-Pi-SuperComputer/</a></p>
+<h2 id="A-Complete-Guide-on-How-to-Set-up-Raspberry-Pi-Cluster-include-NFS"><a href="#A-Complete-Guide-on-How-to-Set-up-Raspberry-Pi-Cluster-include-NFS" class="headerlink" title="A Complete Guide on How to Set up Raspberry Pi Cluster (include NFS)"></a>A Complete Guide on How to Set up Raspberry Pi Cluster (include NFS)</h2><p><a href="https://epcced.github.io/wee_archlet/" target="_blank" rel="noopener">https://epcced.github.io/wee_archlet/</a><br><img src="Raspberry_Pi_cluster_lego.jpg" alt="Raspberry Pi cluster lego"><br>This article also provides the link to how to set up cluster in eduroam networking: <a href="https://www.epcc.ed.ac.uk/blog/2016/04/29/getting-wee-archie-net" target="_blank" rel="noopener">https://www.epcc.ed.ac.uk/blog/2016/04/29/getting-wee-archie-net</a>. </p>
+<h2 id="TopOpt-mentioned-Raspberry-Pi-and-Petsc-Good"><a href="#TopOpt-mentioned-Raspberry-Pi-and-Petsc-Good" class="headerlink" title="TopOpt mentioned Raspberry Pi and Petsc (Good!)"></a>TopOpt mentioned Raspberry Pi and Petsc (Good!)</h2><p><a href="https://courses.cs.ut.ee/MTAT.08.037/2015_spring/uploads/Main/Lab6.pdf" target="_blank" rel="noopener">https://courses.cs.ut.ee/MTAT.08.037/2015_spring/uploads/Main/Lab6.pdf</a></p>
+<h2 id="Using-Raspberry-Pi-to-build-a-cluster-and-implement-topology-optimization"><a href="#Using-Raspberry-Pi-to-build-a-cluster-and-implement-topology-optimization" class="headerlink" title="Using Raspberry Pi to build a cluster and implement topology optimization"></a>Using Raspberry Pi to build a cluster and implement topology optimization</h2><p><a href="https://courses.cs.ut.ee/MTAT.08.037/2015_spring/uploads/Main/Lab6.pdf" target="_blank" rel="noopener">https://courses.cs.ut.ee/MTAT.08.037/2015_spring/uploads/Main/Lab6.pdf</a></p>
+<h2 id="Install-Raspbian"><a href="#Install-Raspbian" class="headerlink" title="Install Raspbian"></a>Install Raspbian</h2><p><a href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md" target="_blank" rel="noopener">https://www.raspberrypi.org/documentation/installation/installing-images/linux.md</a></p>
+<h2 id="Setup-VNC"><a href="#Setup-VNC" class="headerlink" title="Setup VNC"></a>Setup VNC</h2><p><a href="http://www.carobot.cc/how-to/raspberrypi-tutorials/headless-raspberry-pi-using-ssh-and-vnc/" target="_blank" rel="noopener">www.carobot.cc/how-to/raspberrypi-tutorials/headless-raspberry-pi-using-ssh-and-vnc/</a></p>
+<h2 id="Using-vncviewer"><a href="#Using-vncviewer" class="headerlink" title="Using vncviewer"></a>Using vncviewer</h2><p>for example:<br>vncviewer -FullScreen 192.168.0.23:1</p>
+<p>“No matching security types”<br>You can use following steps:<br>Step 1: If you have VNCServer already running just kill it. Use “vncserver -kill :windowNumber”. You can find your window number in the raspberry pi terminal. Generally, you can use 1.</p>
+<p>Step 2: Now you should start your VNCServer by the following command “vncserver -Encryption PreferOff -Authentication VncAuth”. Hit Enter.</p>
+<p>Step 3: This would also prompt you to provide the password just enter a simple one like “raspberry”.</p>
+<p>sudo vncserver :0 -geometry 1920x1080 -depth 24</p>
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h2><p><a href="https://www.raspberrypi.org/documentation/remote-access/ssh/" target="_blank" rel="noopener">https://www.raspberrypi.org/documentation/remote-access/ssh/</a></p>
+<h2 id="Monitor-temperature"><a href="#Monitor-temperature" class="headerlink" title="Monitor temperature"></a>Monitor temperature</h2><p><a href="https://medium.com/@kevalpatel2106/monitor-the-core-temperature-of-your-raspberry-pi-3ddfdf82989fy" target="_blank" rel="noopener">https://medium.com/@kevalpatel2106/monitor-the-core-temperature-of-your-raspberry-pi-3ddfdf82989fy</a></p>
+<h2 id="LAN-setup-successful-for-me"><a href="#LAN-setup-successful-for-me" class="headerlink" title="LAN setup (successful for me)"></a>LAN setup (successful for me)</h2><p>on Ubuntu: <a href="https://askubuntu.com/questions/22835/how-to-network-two-ubuntu-computers-using-ethernet-without-a-router" target="_blank" rel="noopener">https://askubuntu.com/questions/22835/how-to-network-two-ubuntu-computers-using-ethernet-without-a-router</a><br>on Raspberry Pi: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=140252" target="_blank" rel="noopener">https://www.raspberrypi.org/forums/viewtopic.php?t=140252</a></p>
+<h2 id="Wifi-setup-for-Raspberry-Pi"><a href="#Wifi-setup-for-Raspberry-Pi" class="headerlink" title="Wifi setup for Raspberry Pi"></a>Wifi setup for Raspberry Pi</h2><p>sudo nano /etc/wpa_supplicant/wpa_supplicant.conf</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Raspberry-pi/" rel="tag"># Raspberry_pi</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/20/Solution-of-Ubuntu-suspend-errors/" rel="next" title="Solution of Ubuntu suspend errors">
+                <i class="fa fa-chevron-left"></i> Solution of Ubuntu suspend errors
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/10/27/Linux-Std-Resources/" rel="prev" title="Linux_Std_Resources">
+                Linux_Std_Resources <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Zhidong Brian Zhang</p>
+              <div class="site-description motion-element" itemprop="description">Learning is not learning.</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/yourname" title="GitHub &rarr; https://github.com/yourname" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Raspberry-Pi"><span class="nav-number">1.</span> <span class="nav-text">Raspberry Pi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Very-interesting-Raspberry-Pi-applications"><span class="nav-number">2.</span> <span class="nav-text">Very interesting Raspberry Pi applications</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Raspberry-Pi-to-build-a-cluster"><span class="nav-number">3.</span> <span class="nav-text">Using Raspberry Pi to build a cluster:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Other-application-insprison-from-Zhihu"><span class="nav-number">4.</span> <span class="nav-text">Other application insprison from Zhihu:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Raspberry-Pi-Cluster-32-nodes"><span class="nav-number">5.</span> <span class="nav-text">Raspberry Pi Cluster (32 nodes)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-author’s-PhD-thesis-using-the-cluster-to-fulfill-the-his-PhD-work"><span class="nav-number">6.</span> <span class="nav-text">The author’s PhD thesis (using the cluster to fulfill the his PhD work):</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Another-Raspberry-Pi-Cluster"><span class="nav-number">7.</span> <span class="nav-text">Another Raspberry Pi Cluster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Very-good-article-about-how-to-build-an-HPC-cluster"><span class="nav-number">8.</span> <span class="nav-text">Very good article about how to build an HPC cluster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-a-Raspberry-PI-Cluster-should-be-very-very-useful"><span class="nav-number">9.</span> <span class="nav-text">Building a Raspberry PI Cluster (should be very very useful)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Another-Raspberry-Pi-cluster-configuration"><span class="nav-number">10.</span> <span class="nav-text">Another Raspberry Pi cluster configuration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Very-detailed-information-about-SSH-Setup-but-no-NFS-Network-File-System"><span class="nav-number">11.</span> <span class="nav-text">Very detailed information about SSH Setup but no NFS(Network File System)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Complete-Guide-on-How-to-Set-up-Raspberry-Pi-Cluster-include-NFS"><span class="nav-number">12.</span> <span class="nav-text">A Complete Guide on How to Set up Raspberry Pi Cluster (include NFS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TopOpt-mentioned-Raspberry-Pi-and-Petsc-Good"><span class="nav-number">13.</span> <span class="nav-text">TopOpt mentioned Raspberry Pi and Petsc (Good!)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-Raspberry-Pi-to-build-a-cluster-and-implement-topology-optimization"><span class="nav-number">14.</span> <span class="nav-text">Using Raspberry Pi to build a cluster and implement topology optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Raspbian"><span class="nav-number">15.</span> <span class="nav-text">Install Raspbian</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Setup-VNC"><span class="nav-number">16.</span> <span class="nav-text">Setup VNC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Using-vncviewer"><span class="nav-number">17.</span> <span class="nav-text">Using vncviewer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH"><span class="nav-number">18.</span> <span class="nav-text">SSH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monitor-temperature"><span class="nav-number">19.</span> <span class="nav-text">Monitor temperature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LAN-setup-successful-for-me"><span class="nav-number">20.</span> <span class="nav-text">LAN setup (successful for me)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wifi-setup-for-Raspberry-Pi"><span class="nav-number">21.</span> <span class="nav-text">Wifi setup for Raspberry Pi</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Zhidong Brian Zhang</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="Total Visitors">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="Total Views">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
