@@ -112,7 +112,7 @@
 <meta property="og:image" content="http://wonderfulzzd.github.io/2020/10/29/2020-10-29-deal-II-step-26/adaptive_mesh_after_considering_Triangulation%3Cdim%3E::maximum_smoothing.png">
 <meta property="og:image" content="http://wonderfulzzd.github.io/2020/10/29/2020-10-29-deal-II-step-26/3D_Hyper_L.png">
 <meta property="og:image" content="http://wonderfulzzd.github.io/2020/10/29/2020-10-29-deal-II-step-26/Error_estimation_inequality.png">
-<meta property="og:updated_time" content="2020-11-04T21:46:42.496Z">
+<meta property="og:updated_time" content="2020-11-04T21:48:19.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020-10-29-deal.II-step-26">
 <meta name="twitter:description" content="2020.10.29 Step-26 StudyThe step-26 is mainly talking about how deal.ii is doing heat transfer. We can run the default code and derive the results.The result:The mesh: Now I will go through some the p">
@@ -431,7 +431,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-04 16:46:42" itemprop="dateModified" datetime="2020-11-04T16:46:42-05:00">2020-11-04</time>
+                <time title="Modified: 2020-11-04 16:48:19" itemprop="dateModified" datetime="2020-11-04T16:48:19-05:00">2020-11-04</time>
               
             
           </span>
@@ -516,9 +516,14 @@
 
 <p>After considering the smoothing algorithm, the mesh becomes much better as shown in the below picture:<br><img src="adaptive_mesh_after_considering_Triangulation%3Cdim%3E::maximum_smoothing.png" alt="Improved"></p>
 <ol start="4">
-<li>A user can convert to 3D very easily by just assigning<br>‘’’md<br> HeatEquation&lt;3&gt; heat_equation_solver;<br>‘’’<br><img src="3D_Hyper_L.png" alt="3D_Hyper_L"></li>
+<li>A user can convert to 3D very easily by just assigning<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HeatEquation&lt;3&gt; heat<span class="emphasis">_equation_</span>solver;</span><br></pre></td></tr></table></figure>
+
+</li>
 </ol>
-<p>It should be noted that the following line should be commented off. This is just an assertion that the developers are encouraging the user to contribute to the library. If one is interested, he/she can submit an pull request for the 3D model.<br>‘’’md<br>//    Assert(dim == 2, ExcNotImplemented());  // commented off intentionally<br>‘’’</p>
+<p><img src="3D_Hyper_L.png" alt="3D_Hyper_L"></p>
+<p>It should be noted that the following line should be commented off. This is just an assertion that the developers are encouraging the user to contribute to the library. If one is interested, he/she can submit an pull request for the 3D model.</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//    Assert(dim == 2, ExcNotImplemented());  // commented off intentionally</span><br></pre></td></tr></table></figure>
+
 <h2 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work:"></a>Future work:</h2><ol>
 <li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
 </li>
