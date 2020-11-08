@@ -112,8 +112,9 @@
 <meta property="og:image" content="http://wonderfulzzd.github.io/2020/10/29/2020-10-29-deal-II-step-26/adaptive_mesh_after_considering_Triangulation%3Cdim%3E::maximum_smoothing.png">
 <meta property="og:image" content="http://wonderfulzzd.github.io/2020/10/29/2020-10-29-deal-II-step-26/3D_Hyper_L.png">
 <meta property="og:image" content="http://wonderfulzzd.github.io/2020/10/29/2020-10-29-deal-II-step-26/solution_animation_3D.gif">
+<meta property="og:image" content="http://wonderfulzzd.github.io/2020/10/29/2020-10-29-deal-II-step-26/Top_surface_Neuuman_boundary_condition.png">
 <meta property="og:image" content="http://wonderfulzzd.github.io/2020/10/29/2020-10-29-deal-II-step-26/Error_estimation_inequality.png">
-<meta property="og:updated_time" content="2020-11-05T02:39:21.912Z">
+<meta property="og:updated_time" content="2020-11-08T01:53:25.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2020-10-29-deal.II-step-26">
 <meta name="twitter:description" content="2020.10.29 Step-26 StudyThe step-26 is mainly talking about how deal.ii is doing heat transfer. We can run the default code and derive the results.The result:The mesh: Now I will go through some the p">
@@ -432,7 +433,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-11-04 21:39:21" itemprop="dateModified" datetime="2020-11-04T21:39:21-05:00">2020-11-04</time>
+                <time title="Modified: 2020-11-07 20:53:25" itemprop="dateModified" datetime="2020-11-07T20:53:25-05:00">2020-11-07</time>
               
             
           </span>
@@ -526,7 +527,10 @@
 <figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//    Assert(dim == 2, ExcNotImplemented());  // commented off intentionally</span><br></pre></td></tr></table></figure>
 
 <ol start="5">
-<li>3D moving heat source<br><img src="solution_animation_3D.gif" alt="Moving heat source 3D"></li>
+<li><p>3D moving heat source<br><img src="solution_animation_3D.gif" alt="Moving heat source 3D"></p>
+</li>
+<li><p>Make top surface a Neuuman boundary<br><img src="Top_surface_Neuuman_boundary_condition.png" alt="Neuuman boundary"></p>
+</li>
 </ol>
 <h2 id="Future-work"><a href="#Future-work" class="headerlink" title="Future work:"></a>Future work:</h2><ol>
 <li><p>The FEM information flow control should recieve more attention, such as how exactly the boundary_values are applied on the final linear equations system.</p>
